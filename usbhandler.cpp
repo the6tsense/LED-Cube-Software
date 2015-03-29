@@ -2,15 +2,73 @@
 
 using namespace std;
 
-usbHandler::usbHandler(int comPort) : port(comPort) {}
+usbHandler::usbHandler() : m_port(0) {}
 
-usbHandler::~usbHandler() {}
+usbHandler::~usbHandler() {
+    std::cout << "usb destroyed" << std::endl;
+    RS232_CloseComport(m_port);
+}
 
-bool usbHandler::openPort(void) {
-    if(RS232_OpenComport(port, Constants::BAUDRATE)) {
-        cout << "Error opening connection" << endl;
+bool usbHandler::openPort(void)
+{
+    //initialize variables
+    int found = 0;
+    int amountFound = 0;
+
+    //the rs232 file has 30 ports for linux to check
+    #ifdef __linux__ /*linux*/
+    int ports = 29;
+
+    //and 16 ports for windows
+    #else /*windows*/
+    int ports = 15;
+
+    #endif
+
+    //go through all the available ports
+    for(; ports >= 0; ports--)
+    {
+        //see if a connection can be established
+        if(!RS232_OpenComport(ports, 38400))
+        {
+            //if a sender was found remember its port number
+            found = ports;
+
+            //increase amount of found senders
+            amountFound++;
+
+            //and close the connection again
+            RS232_CloseComport(ports);
+        }
+    }
+
+    //if no sender was found
+    if(amountFound < 1)
+    {
+        //print an error message and quit
+        std::cout << "No sender connected." << std::endl;
+        return false;
+
+    //if more than one sender was found
+    } else if(amountFound > 1)
+    {
+        //print an error message and quit
+        std::cout << "More than one sender found. Please make sure only one is connected" << std::endl;
+    }
+
+    std::cout << "connecting to: " << found << std::endl;
+
+    //try to open the comport found again
+    if(RS232_OpenComport(found, 38400))
+    {
+        //in the unlikely case this fails, quit
+        std::cout << "Something odd happened" << std::endl;
         return false;
     }
+
+    //remember port
+    m_port = found;
+
     return true;
 }
 
@@ -32,7 +90,7 @@ void usbHandler::test(bool xy) {
 
     stream[0] = 0x80;
 
-    if(!RS232_SendBuf(port, stream, 105)) {
+    if(!RS232_SendBuf(m_port, stream, 105)) {
         cout << "Error sending bytes." << endl;
     }
     free(stream);
@@ -64,15 +122,19 @@ void usbHandler::sendUpdate(int cubeSize, array3d* const array) {
 
     stream[0] |= (1 << 7);
 
+    #ifdef STREAMDEBUG
     for(int i = 0; i < bytes; i++) {
         cout << hex << (int) stream[i] << ", ";
     }
     cout << endl;
+    #endif
 
-    if(!RS232_SendBuf(port, stream, bytes)) {
+    if(!RS232_SendBuf(m_port, stream, bytes)) {
         cout << "Error sending bytes." << endl;
     } else {
+        #ifdef STREAMDEBUG
         cout << "sending succesfull" << endl;
+        #endif
     }
 
     free(stream);

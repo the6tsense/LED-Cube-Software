@@ -21,8 +21,8 @@ array3d::~array3d() {
 }
 
 bool* array3d::operator()(int x, int y, int z) {
-    if(x >=cubeSize || y >= cubeSize || z >= cubeSize) {
-        std::cout << "invalid pointer" << std::endl;
+    if(x >= cubeSize || y >= cubeSize || z >= cubeSize || x < 0 || y < 0 || z < 0) {
+        std::cout << "invalid pointer: " << x << ", " << y << ", " << z << std::endl;
         return &data[0];
     }
     return &data[x * (int)pow(cubeSize, 2.0) + y * cubeSize + z];

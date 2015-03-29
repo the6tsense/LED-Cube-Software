@@ -23,8 +23,8 @@ private:
     bool effectAlphabet[9][9][100];
     bool isActive;
     bool isUpdateReady;
-    int cubeSize;
-    int status;
+    int m_cubeSize;
+    int m_status;
     unsigned int effectSpeed;
     array3d cubearray;
     usbHandler* usb;
@@ -33,7 +33,7 @@ private:
     vector<thread> threads;
     const CubeWindow* window;
 
-    void effectLoop();
+    void effectLoop(void);
     void initAlphabet(void);
     void effect(void);
 
@@ -58,7 +58,7 @@ private:
     void shiftLayer(int z, int side, bool isInvert);
 
 public:
-    EffectHandler(int cubeSize, int comPort, CubeWindow* const window);
+    EffectHandler(int cubeSize, CubeWindow* const window);
     ~EffectHandler();
 
     bool start(void);

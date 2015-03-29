@@ -20,7 +20,10 @@ SOURCES += main.cpp\
     array3d.cpp \
     mathfunctions.cpp \
     particle.cpp \
-    cubefont.cpp
+    cubefont.cpp \
+    texteffect.cpp \
+    letter.cpp \
+    font.cpp
 
 HEADERS  += cubewindow.h \
     effecthandler.h \
@@ -31,7 +34,9 @@ HEADERS  += cubewindow.h \
     mathfunctions.h \
     particle.h \
     cubefont.h \
-    constants.h
+    texteffect.h \
+    letter.h \
+    font.h
 
 FORMS    += cubewindow.ui
 
@@ -39,3 +44,6 @@ QMAKE_CXXFLAGS += -std=c++11
 
 INCLUDEPATH += $$PWD/../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../usr/local/include
+
+RESOURCES += \
+    ressources.qrc

@@ -1,6 +1,8 @@
 #ifndef CUBEWINDOW_H
 #define CUBEWINDOW_H
 
+#include "font.h"
+
 #include <QMainWindow>
 #include "effecthandler.h"
 #include "ui_cubewindow.h"
@@ -28,23 +30,26 @@ public:
     unsigned int getEffectSpeed(void) const;
 
 private slots:
-    void on_actionButton_toggled(bool checked);
+    void on_Button_action_toggled(bool checked);
 
-    void on_addAllButton_clicked();
+    void on_Button_addAll_clicked();
 
-    void on_deleteAllButton_clicked();
+    void on_Button_deleteAll_clicked();
 
-    void on_addButton_clicked();
+    void on_Button_add_clicked();
 
-    void on_deletedButton_clicked();
+    void on_Button_delete_clicked();
+
+    void on_pushButton_addTextEffect_clicked();
 
 private:
     Ui::CubeWindow* ui;
     EffectHandler* effect;
     QButtonGroup* colourSelect;
+    Font m_fontAnchor;
 
-    void updatePorts(void);
     void initList(void);
+    void initComboBox(void);
 };
 
 #endif // CUBEWINDOW_H
