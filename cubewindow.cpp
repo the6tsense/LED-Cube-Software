@@ -15,58 +15,40 @@ CubeWindow::~CubeWindow() {
     delete ui;
 }
 
-void CubeWindow::initList(void) {
+void CubeWindow::updatePorts(void) {
+    //the rs232 file has 30 ports for linux to check
     #ifdef __linux__ /*linux*/
-    ui->portSelect->addItem("/dev/ttyS0", 0);
-    ui->portSelect->addItem("/dev/ttyS1", 1);
-    ui->portSelect->addItem("/dev/ttyS2", 2);
-    ui->portSelect->addItem("/dev/ttyS3", 3);
-    ui->portSelect->addItem("/dev/ttyS4", 4);
-    ui->portSelect->addItem("/dev/ttyS5", 5);
-    ui->portSelect->addItem("/dev/ttyS6", 6);
-    ui->portSelect->addItem("/dev/ttyS7", 7);
-    ui->portSelect->addItem("/dev/ttyS8", 8);
-    ui->portSelect->addItem("/dev/ttyS9", 9);
-    ui->portSelect->addItem("/dev/ttyS10", 10);
-    ui->portSelect->addItem("/dev/ttyS11", 11);
-    ui->portSelect->addItem("/dev/ttyS12", 12);
-    ui->portSelect->addItem("/dev/ttyS13", 13);
-    ui->portSelect->addItem("/dev/ttyS14", 14);
-    ui->portSelect->addItem("/dev/ttyS15", 15);
-    ui->portSelect->addItem("/dev/ttyUSB0", 16);
-    ui->portSelect->addItem("/dev/ttyUSB1", 17);
-    ui->portSelect->addItem("/dev/ttyUSB2", 18);
-    ui->portSelect->addItem("/dev/ttyUSB3", 19);
-    ui->portSelect->addItem("/dev/ttyUSB4", 20);
-    ui->portSelect->addItem("/dev/ttyUSB5", 21);
-    ui->portSelect->addItem("/dev/ttyAMA0", 22);
-    ui->portSelect->addItem("/dev/ttyAMA1", 23);
-    ui->portSelect->addItem("/dev/ttyACM0", 24);
-    ui->portSelect->addItem("/dev/ttyACM1", 25);
-    ui->portSelect->addItem("/dev/rfcomm0", 26);
-    ui->portSelect->addItem("/dev/rfcomm1", 27);
-    ui->portSelect->addItem("/dev/ircomm0", 28);
-    ui->portSelect->addItem("/dev/ircomm1", 29);
+    int port = 29;
 
+    //and 16 ports for windows
     #else /*windows*/
-    ui->portSelect->addItem("COM1", 0);
-    ui->portSelect->addItem("COM2", 1);
-    ui->portSelect->addItem("COM3", 2);
-    ui->portSelect->addItem("COM4", 3);
-    ui->portSelect->addItem("COM5", 4);
-    ui->portSelect->addItem("COM6", 5);
-    ui->portSelect->addItem("COM7", 6);
-    ui->portSelect->addItem("COM8", 7);
-    ui->portSelect->addItem("COM9", 8);
-    ui->portSelect->addItem("COM10", 9);
-    ui->portSelect->addItem("COM11", 10);
-    ui->portSelect->addItem("COM12", 11);
-    ui->portSelect->addItem("COM13", 12);
-    ui->portSelect->addItem("COM14", 13);
-    ui->portSelect->addItem("COM15", 14);
-    ui->portSelect->addItem("COM16", 15);
+    int port = 15;
 
     #endif
+
+    ui->portSelect->clear();
+
+    //go through all the available ports
+    for(; port >= 0; port--)
+    {
+        //see if a connection can be established
+        if(!RS232_OpenComport(port, Constants::BAUDRATE))
+        {
+
+#ifdef __linux__
+            ui->portSelect->addItem(Constants::linuxPorts[port], port);
+#else
+            ui->portSelect->addItem("COM" + QString::number(port), port);
+#endif
+
+            //and close the connection again
+            RS232_CloseComport(port);
+        }
+    }
+}
+
+void CubeWindow::initList(void) {
+    updatePorts();
 
     ui->effectList->addItem("Wave");
     ui->effectList->addItem("WaveXY");
@@ -93,18 +75,19 @@ void CubeWindow::on_actionButton_toggled(bool checked) {
         //create new effect object
         effect = new EffectHandler(
             ui->cubeSizeBox->value(),
-            ui->portSelect->currentIndex(), this);
+            ui->portSelect->itemData(0).toInt(), this);
 
         //try to start animations
         if(!effect->start()) {
             //port not found
             ui->actionButton->setChecked(false);
             setStatus(QString("Error opening comPort"), QString("#FF0000"));
+
         } else {
             //animations started
             setStatus(QString("Running"), QString("#0B610B"));
+            return;
         }
-        return;
     }
     //unblock all cube related settings
     ui->cubeSizeBox->setEnabled(true);

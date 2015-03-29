@@ -43,6 +43,7 @@ private:
     EffectHandler* effect;
     QButtonGroup* colourSelect;
 
+    void updatePorts(void);
     void initList(void);
 };
 

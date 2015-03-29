@@ -7,7 +7,7 @@ usbHandler::usbHandler(int comPort) : port(comPort) {}
 usbHandler::~usbHandler() {}
 
 bool usbHandler::openPort(void) {
-    if(RS232_OpenComport(port, 38400)) {
+    if(RS232_OpenComport(port, Constants::BAUDRATE)) {
         cout << "Error opening connection" << endl;
         return false;
     }

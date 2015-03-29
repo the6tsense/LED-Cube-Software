@@ -30,7 +30,8 @@ HEADERS  += cubewindow.h \
     array3d.h \
     mathfunctions.h \
     particle.h \
-    cubefont.h
+    cubefont.h \
+    constants.h
 
 FORMS    += cubewindow.ui
 
