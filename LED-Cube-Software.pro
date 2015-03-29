@@ -23,7 +23,16 @@ SOURCES += main.cpp\
     cubefont.cpp \
     texteffect.cpp \
     letter.cpp \
-    font.cpp
+    font.cpp \
+    effect.cpp \
+    plainseffect.cpp \
+    raineffect.cpp \
+    waterfalleffect.cpp \
+    randwarpeffect.cpp \
+    oneafteranothereffect.cpp \
+    fireworkseffect.cpp \
+    shrinkboxeffect.cpp \
+    mathfunctioneffect.cpp
 
 HEADERS  += cubewindow.h \
     effecthandler.h \
@@ -36,7 +45,17 @@ HEADERS  += cubewindow.h \
     cubefont.h \
     texteffect.h \
     letter.h \
-    font.h
+    font.h \
+    effect.h \
+    plainseffect.h \
+    raineffect.h \
+    waterfalleffect.h \
+    randwarpeffect.h \
+    oneafteranothereffect.h \
+    fireworkseffect.h \
+    shrinkboxeffect.h \
+    mathfunctioneffect.h \
+    constants.h
 
 FORMS    += cubewindow.ui
 
