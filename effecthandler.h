@@ -3,12 +3,12 @@
 
 #define M_PI 3.14159
 
-#include "effect.h"
 #include "usbhandler.h"
 #include "cubeTools.h"
 #include "cubewindow.h"
-#include "fireworkseffect.h"
-#include "mathfunctioneffect.h"
+#include "mathfunctions.h"
+#include "array3d.h"
+#include "particle.h"
 #include <stdlib.h>
 #include <time.h>
 #include <thread>
@@ -20,22 +20,45 @@ class usbHandler;
 
 class EffectHandler {
 private:
-    bool m_isActive;
-    bool m_isUpdateReady;
+    bool effectAlphabet[9][9][100];
+    bool isActive;
+    bool isUpdateReady;
+    int m_cubeSize;
     int m_status;
-    unsigned int m_effectSpeed;
-    std::vector<Effect*> m_effects;
-    usbHandler* m_usb;
-    QString m_currentEffect;
-    vector<thread> m_threads;
-    const CubeWindow* m_window;
+    unsigned int effectSpeed;
+    array3d cubearray;
+    usbHandler* usb;
+    MathFunctions* mathFunc;
+    QString currentEffect;
+    vector<thread> threads;
+    const CubeWindow* window;
 
     void effectLoop(void);
+    void initAlphabet(void);
     void effect(void);
-    void initEffectList(void);
+
+    /*effects*/
+    void waveEffect(void);
+    void waveEffectXY(void);
+    void plainsEffect(void);
+    void rainEffect(void);
+    void waterfallEffect(void);
+    void oneAfterAnotherEffect(void);
+    void waveEffectMid(void);
+    void randWarpEffect(void);
+    void fireworksEffect(void);
+    void shrinkBoxEffect(void);
+
+    /*partial effects*/
+    void mathFunctionEffect(int (MathFunctions::*function)(int, int, int), int endtime);
+
+    /*effect helper*/
+    bool* mirror(int x, int y, int z, int side);
+    void switchLayer(int z, int side, bool isOn);
+    void shiftLayer(int z, int side, bool isInvert);
 
 public:
-    EffectHandler(CubeWindow* const window);
+    EffectHandler(int cubeSize, CubeWindow* const window);
     ~EffectHandler();
 
     bool start(void);

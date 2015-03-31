@@ -7,7 +7,6 @@
 
 #include "cubeTools.h"
 #include "effecthandler.h"
-#include "effect.h"
 
 class EffectHandler;
 
@@ -19,7 +18,7 @@ public:
     ~usbHandler();
     void test(bool xy);
     bool openPort(void);
-    void sendUpdate(void);
+    void sendUpdate(int cubeSize, array3d* const array);
 };
 
 #endif // USBHANDLER_H

@@ -5,6 +5,7 @@ using namespace std;
 usbHandler::usbHandler() : m_port(0) {}
 
 usbHandler::~usbHandler() {
+    std::cout << "usb destroyed" << std::endl;
     RS232_CloseComport(m_port);
 }
 
@@ -95,23 +96,23 @@ void usbHandler::test(bool xy) {
     free(stream);
 }
 
-void usbHandler::sendUpdate(void) {
+void usbHandler::sendUpdate(int cubeSize, array3d* const array) {
     int count = 0;
-    int bytes = ceil(pow(Effect::getCubeSize(), 3.0) / 7);
+    int bytes = ceil(pow(cubeSize, 3.0) / 7);
     unsigned char* const stream = (unsigned char*) malloc(bytes * sizeof(unsigned char));
     unsigned char streamChar = 0x00;
     unsigned char* pstream = stream;
 
-    for(int x = 0; x < Effect::getCubeSize(); x++) {
-        for(int y = 0; y < Effect::getCubeSize(); y++) {
-            for(int z = 0; z < Effect::getCubeSize(); z++) {
+    for(int x = 0; x < cubeSize; x++) {
+        for(int y = 0; y < cubeSize; y++) {
+            for(int z = 0; z < cubeSize; z++) {
                 if(count >= 7) {
                     *pstream++ = streamChar;
                     streamChar = 0x00;
                     count = 0;
                 }
 
-                streamChar |= (*Effect::s_cubearray(x, y, z) << count);
+                streamChar |= (*array->operator ()(x, y, z) << count);
                 count ++;
             }
         }

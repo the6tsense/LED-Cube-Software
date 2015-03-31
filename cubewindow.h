@@ -2,12 +2,11 @@
 #define CUBEWINDOW_H
 
 #include "font.h"
-#include "texteffect.h"
+
+#include <QMainWindow>
 #include "effecthandler.h"
 #include "ui_cubewindow.h"
 #include <QPalette>
-#include <QMainWindow>
-#include <QFile>
 
 using namespace std;
 
@@ -47,7 +46,7 @@ private:
     Ui::CubeWindow* ui;
     EffectHandler* effect;
     QButtonGroup* colourSelect;
-    Font* m_fontAnchor;
+    Font m_fontAnchor;
 
     void initList(void);
     void initComboBox(void);

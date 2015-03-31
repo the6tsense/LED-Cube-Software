@@ -1,5 +1,7 @@
 #include "font.h"
 
+#define DEBUG_FONTREADER
+
 int Font::s_fontAmount = 0;
 
 Font::Font() :

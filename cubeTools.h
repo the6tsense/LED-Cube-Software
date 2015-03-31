@@ -18,6 +18,13 @@ public:
         #endif
     }
 
+    static void clearCube(int cubeSize, array3d* cube) {
+        bool* pcube = cube->operator ()(0, 0, 0);
+        for(int i = 0; i < pow(cubeSize, 3.0); i++) {
+            *pcube++ = false;
+        }
+    }
+
     static double randDouble(double min, double max) {
         double f = (double)rand() / RAND_MAX;
         return min + f * (max - min);
