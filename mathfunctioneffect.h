@@ -11,10 +11,9 @@ private:
 
     int (MathFunctions::*m_func)(int, int, int);
     int m_time;
-    int m_key;
 
 public:
-    MathFunctionEffect(int endtime, QString name, int (MathFunctions::*function)(int, int, int));
+    MathFunctionEffect(int endtime, int (MathFunctions::*function)(int, int, int));
 
     void calc(int status);
 };

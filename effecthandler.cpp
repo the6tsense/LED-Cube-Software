@@ -30,14 +30,6 @@ EffectHandler::~EffectHandler()
 void EffectHandler::initEffectList(void)
 {
     m_effects.push_back(new FireworksEffect("Fireworks"));
-    m_effects.push_back(new MathFunctionEffect(3.14159 * 100, "Wave", &MathFunctions::linearWave));
-    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
-                                               "diagonal wave",
-                                               &MathFunctions::diagonalWave));
-    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
-                                               "middle wave",
-                                               &MathFunctions::midWave));
-    m_effects.push_back(new OneAfterAnotherEffect());
 }
 
 bool EffectHandler::start(void)

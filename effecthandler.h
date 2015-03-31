@@ -9,13 +9,6 @@
 #include "cubewindow.h"
 #include "fireworkseffect.h"
 #include "mathfunctioneffect.h"
-#include "oneafteranothereffect.h"
-#include "plainseffect.h"
-#include "raineffect.h"
-#include "randwarpeffect.h"
-#include "shrinkboxeffect.h"
-#include "texteffect.h"
-#include "waterfalleffect.h"
 #include <stdlib.h>
 #include <time.h>
 #include <thread>
