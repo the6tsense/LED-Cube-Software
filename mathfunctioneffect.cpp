@@ -3,10 +3,12 @@
 MathFunctions* MathFunctionEffect::s_mathFunc = new MathFunctions(getCubeSize());
 
 MathFunctionEffect::MathFunctionEffect(int endtime,
+                                       QString name,
                                        int (MathFunctions::*function)(int, int, int)
                                        ) :
     m_func(function),
-    m_time(endtime)
+    m_time(endtime),
+    m_key(name)
 {}
 
 void MathFunctionEffect::calc(int status)

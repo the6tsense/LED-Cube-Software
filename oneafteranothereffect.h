@@ -7,6 +7,7 @@ class OneAfterAnotherEffect : public Effect
 {
 private:
     int m_time;
+    int m_key;
     int m_x, m_y, m_z;
 
 public:

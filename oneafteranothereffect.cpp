@@ -1,7 +1,8 @@
 #include "oneafteranothereffect.h"
 
-OneAfterAnotherEffect::OneAfterAnotherEffect() :
+OneAfterAnotherEffect::OneAfterAnotherEffect(QString name) :
     m_time(2 * pow(getCubeSize(), 3)),
+    m_key(name),
     m_x(0),
     m_y(0),
     m_z(0)
