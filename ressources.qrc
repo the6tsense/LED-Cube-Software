@@ -1,3 +1,5 @@
 <RCC>
-    <qresource prefix="/fonts"/>
+    <qresource prefix="/fonts">
+        <file>ressources/defaultFont.txt</file>
+    </qresource>
 </RCC>

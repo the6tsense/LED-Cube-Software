@@ -34,6 +34,15 @@ void CubeWindow::initList(void)
 
 void CubeWindow::initComboBox(void)
 {
+<<<<<<< HEAD
+=======
+    m_fontAnchor = new Font();
+    m_fontAnchor->readFont("D:/Dokumente/GitHub/LED-Cube-Software/ressources/defaultFont.txt");
+
+    ui->comboBox_font->addItem("default");
+
+    ui->comboBox_displayType->addItem("Outside");
+>>>>>>> parent of 95198ee... Revert "effects are now objects"
 }
 
 //Action button pressed start/stop the animations
@@ -47,9 +56,11 @@ void CubeWindow::on_Button_action_toggled(bool checked)
         ui->RadioButton_singleColour->setEnabled(false);
 
         //create new effect object
-        effect = new EffectHandler(
-            ui->SpinBox_size->value(),
-            this);
+        effect = new EffectHandler(this);
+
+        Effect::setCubeSize(ui->SpinBox_size->value());
+        delete(&Effect::s_cubearray);
+        Effect::s_cubearray = *(new array3d(Effect::getCubeSize()));
 
         //try to start animations
         if(!effect->start())
@@ -137,6 +148,15 @@ void CubeWindow::on_Button_delete_clicked()
 
 void CubeWindow::on_pushButton_addTextEffect_clicked()
 {
-    Font f;
-    f.readFont("C:/Users/Julian/Desktop/DefaultFont.txt");
+    if(ui->lineEdit_effectName->text().isEmpty())
+    {
+        std::cout << "No name." << std::endl;
+        return;
+    }
+    TextEffect* newEffect = new TextEffect(ui->lineEdit_effectName->text(),
+                                          ui->textEdit_displayText->toPlainText(),
+                                          ui->comboBox_font->currentIndex(),
+                                          ui->comboBox_displayType->currentIndex());
+
+    ui->List_effects->addItem(newEffect->getName());
 }
