@@ -34,8 +34,6 @@ void CubeWindow::initList(void)
 
 void CubeWindow::initComboBox(void)
 {
-    m_fontAnchor = new Font();
-    m_fontAnchor.readFont()
 }
 
 //Action button pressed start/stop the animations
