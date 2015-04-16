@@ -2,11 +2,11 @@
 
 EffectHandler::EffectHandler(CubeWindow* const window) :
     m_status(0),
-    m_usb(new usbHandler())
+    m_usb(new UsbHandler()),
+    m_currentEffect(nullptr)
 {
     m_isActive = true;
     m_isUpdateReady = false;
-    m_currentEffect = QString("");
     m_window = window;
 
     srand(time(nullptr));
@@ -18,18 +18,29 @@ EffectHandler::EffectHandler(CubeWindow* const window) :
 
 EffectHandler::~EffectHandler()
 {
-    m_isActive = false;
-    for(auto& activeThread : m_threads)
+    stop();
+    for(auto& effect : m_effects)
     {
-        activeThread.join();
+        delete(effect);
     }
-
-    delete m_usb;
 }
 
 void EffectHandler::initEffectList(void)
 {
     m_effects.push_back(new FireworksEffect("Fireworks"));
+    m_effects.push_back(new OneAfterAnotherEffect("One after another"));
+    m_effects.push_back(new PlainsEffect("Plains"));
+    m_effects.push_back(new RainEffect("Rain"));
+    m_effects.push_back(new RandWarpEffect("Random warp"));
+    m_effects.push_back(new ShrinkBoxEffect("Shrink Box"));
+    m_effects.push_back(new WaterfallEffect("Waterfall"));
+    m_effects.push_back(new MathFunctionEffect(3.14159 * 100, "Wave", &MathFunctions::linearWave));
+    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
+                                               "Diagonal Wave",
+                                               &MathFunctions::diagonalWave));
+    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
+                                               "Middle Wave",
+                                               &MathFunctions::midWave));
 }
 
 bool EffectHandler::start(void)
@@ -38,46 +49,40 @@ bool EffectHandler::start(void)
     {
         return false;
     }
+
+    m_isActive = true;
     m_threads.push_back(thread(&EffectHandler::effectLoop, this));
     return true;
 }
 
-void EffectHandler::effect(void)
+void EffectHandler::stop(void)
 {
-    /*cout << currentEffect.toStdString() << endl;
-    if(!currentEffect.compare("Wave")) {
-        waveEffect();
+    m_isActive = false;
+    for(auto& activeThread : m_threads)
+    {
+        activeThread.join();
+    }
+    m_threads.clear();
 
-    } else if(!currentEffect.compare("WaveXY")) {
-        waveEffectXY();
+    m_currentEffect = nullptr;
+    m_status = 0;
+    delete(m_usb);
+}
 
-    } else if(!currentEffect.compare("WaveMid")) {
-        waveEffectMid();
+void EffectHandler::addEffect(Effect* effect)
+{
+    m_effects.push_back(effect);
+}
 
-    } else if(!currentEffect.compare("Plains")) {
-        plainsEffect();
+vector<QString> EffectHandler::getEffects(void)
+{
+    vector<QString> out;
 
-    } else if(!currentEffect.compare("Rain")) {
-        rainEffect();
-
-    } else if(!currentEffect.compare("Waterfall")) {
-        waterfallEffect();
-
-    } else if(!currentEffect.compare("OneAfterAnother")) {
-        oneAfterAnotherEffect();
-
-    } else if(!currentEffect.compare("randWarpEffect")) {
-        randWarpEffect();
-
-    } else if(!currentEffect.compare("Firework")) {
-        fireworksEffect();
-
-    } else if(!currentEffect.compare("ShrinkBox")) {
-        shrinkBoxEffect();
-
-    } else {
-        nextEffect();
-    }*/
+    for(auto& effect : m_effects)
+    {
+        out.push_back((*effect).getKey());
+    }
+    return out;
 }
 
 void EffectHandler::effectLoop()
@@ -86,12 +91,29 @@ void EffectHandler::effectLoop()
 
     while(m_isActive)
     {
-        effect();
+        if(m_currentEffect == nullptr)
+        {
+            nextEffect();
+            chrono::milliseconds duration(20);
+            this_thread::sleep_for(duration);
+            continue;
+        }
+
+        m_currentEffect->calc(m_status);
+
         //usb->test(true);
         chrono::milliseconds duration(m_window->getEffectSpeed());
         this_thread::sleep_for(duration);
 
         m_usb->sendUpdate();
+
+        m_status++;
+
+        if(m_status >= m_currentEffect->getTime())
+        {
+            m_status = 0;
+            nextEffect();
+        }
     }
 }
 
@@ -106,73 +128,87 @@ void EffectHandler::nextEffect()
     //no effects in list
     if(size < 1)
     {
-        m_currentEffect = "";
+        if(m_currentEffect != nullptr)
+        {
+            m_currentEffect->end();
+        }
+        m_currentEffect = nullptr;
+
         Effect::clearCube();
+        m_usb->sendUpdate();
+
+        return;
+    }
 
     // more than one effect in list
-    }
-    else if(size > 1)
+    if(size > 1)
     {
-        Effect::clearCube();
-
-        //select random effect
-        if(m_window->isRandomized())
+        if(m_currentEffect == nullptr)
         {
-            do
+            if(m_window->isRandomized())
             {
                 index = rand() % size;
             }
-            while(!effectList[index].compare(m_currentEffect));
-
-            m_currentEffect = effectList[index];
-
-        //select next effect from list
+            else
+            {
+                index = 0;
+            }
         }
         else
         {
-            //get index of current effect
-            for(auto& item : effectList)
+            m_currentEffect->end();
+
+            Effect::clearCube();
+
+            //select random effect
+            if(m_window->isRandomized())
             {
-                index++;
-                if(!item.compare(m_currentEffect))
+                do
                 {
-                    break;
+                    index = rand() % size;
                 }
+                while(!effectList[index].compare(m_currentEffect->getKey()));
             }
-
-            //effect not there anymore or last in list
-            //-> new effect = first effect from list
-            if(index >= size)
-            {
-                m_currentEffect = effectList[0];
-
-            //otherwise select next effect
-            }
+            //select next effect from list
             else
             {
-                m_currentEffect = effectList[index];
+                //get index of current effect
+                for(auto& item : effectList)
+                {
+                    index++;
+                    if(!item.compare(m_currentEffect->getKey()))
+                    {
+                        break;
+                    }
+                }
+
+                //effect not there anymore or last in list
+                //-> new effect = first effect from list
+                if(index >= size)
+                {
+                    index = 0;
+                }
             }
         }
     }
     else
     {
-        m_currentEffect = effectList[0];
+        index = 0;
     }
+
+    for(auto& effect : m_effects)
+    {
+        if(!effect->getKey().compare(effectList[index]))
+        {
+            m_currentEffect = effect;
+            return;
+        }
+    }
+
+    std::cout << "Effect not there." << std::endl;
 }
 
 /******************************** effect functions ************************************/
-
-/*void gameOfLifeEffect(void) {
-    if(m_status == 0) {
-        for(int i = m_cubeSize * 3; i > 0; i--) {
-            cubearray();
-        }
-    } else if(m_status > m_cubeSize * 100) {
-
-    } else {
-
-    }
-}*/
 
 
 

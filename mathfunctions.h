@@ -3,15 +3,14 @@
 
 #define M_PI 3.14159
 
+#include "effect.h"
 #include <string>
 #include <math.h>
 
-class MathFunctions {
-private:
-    int cubeSize;
-
+class MathFunctions
+{
 public:
-    MathFunctions(int cubeSize);
+    MathFunctions();
 
     int linearWave(int x, int y, int t);
     int diagonalWave(int x, int y, int t);

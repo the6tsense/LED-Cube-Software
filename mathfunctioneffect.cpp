@@ -1,13 +1,16 @@
 #include "mathfunctioneffect.h"
 
-MathFunctions* MathFunctionEffect::s_mathFunc = new MathFunctions(getCubeSize());
+MathFunctions* MathFunctionEffect::s_mathFunc = new MathFunctions();
 
 MathFunctionEffect::MathFunctionEffect(int endtime,
+                                       QString name,
                                        int (MathFunctions::*function)(int, int, int)
                                        ) :
-    m_func(function),
-    m_time(endtime)
-{}
+    m_func(function)
+{
+    setTime(endtime);
+    setKey(name);
+}
 
 void MathFunctionEffect::calc(int status)
 {
@@ -21,7 +24,7 @@ void MathFunctionEffect::calc(int status)
         {
             //calculate x based on function thrown in
             int z = (s_mathFunc->*m_func)(x, y, status);
-            *s_cubearray(x, y, z) = true;
+            cube()(x, y, z) = true;
         }
     }
 }

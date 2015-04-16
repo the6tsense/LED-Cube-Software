@@ -11,12 +11,12 @@
 
 class EffectHandler;
 
-class usbHandler {
+class UsbHandler {
 private:
     int m_port;
 public:
-    usbHandler();
-    ~usbHandler();
+    UsbHandler();
+    ~UsbHandler();
     void test(bool xy);
     bool openPort(void);
     void sendUpdate(void);

@@ -5,11 +5,8 @@
 
 class PlainsEffect : public Effect
 {
-private:
-    int m_time;
-
 public:
-    PlainsEffect();
+    PlainsEffect(QString name);
 
     void calc(int status);
     int getTime(void);

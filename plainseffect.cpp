@@ -1,8 +1,14 @@
 #include "plainseffect.h"
 
-PlainsEffect::PlainsEffect() :
-    m_time(getCubeSize() * 6 * 4)
-{}
+PlainsEffect::PlainsEffect(QString name)
+{
+    setKey(name);
+}
+
+int PlainsEffect::getTime(void)
+{
+    return getCubeSize() * 6 * 4;
+}
 
 void PlainsEffect::calc(int status)
 {

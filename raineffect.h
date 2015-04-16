@@ -5,14 +5,10 @@
 
 class RainEffect : public Effect
 {
-private:
-    int m_time;
-
 public:
-    RainEffect();
+    RainEffect(QString name);
 
     void calc(int status);
-    int getTime(void);
 };
 
 #endif // RAINEFFECT_H

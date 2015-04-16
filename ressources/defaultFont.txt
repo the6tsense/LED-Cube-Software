@@ -1,6 +1,7 @@
 <size>
 	<width>7</width>
-	<height>7</height>
+	<height>8</height>
+	<name>Minecraftia</name>
 </size>
 <letters>
 	<letter>
@@ -13,6 +14,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -25,6 +27,7 @@
 			<row>0100010</row>
 			<row>0100010</row
 			<row>0111100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -37,6 +40,7 @@
 			<row>0100000</row>
 			<row>0100010</row>
 			<row>0011100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -49,6 +53,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0111100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -61,6 +66,7 @@
 			<row>0100000</row>
 			<row>0100000</row>
 			<row>0111110</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -73,6 +79,7 @@
 			<row>0100000</row>
 			<row>0100000</row>
 			<row>0100000</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -85,6 +92,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0011100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -97,6 +105,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -109,6 +118,7 @@
 			<row>0001000</row>
 			<row>0001000</row>
 			<row>0011100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -121,6 +131,7 @@
 			<row>0000010</row>
 			<row>0100010</row>
 			<row>0011100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -133,6 +144,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -145,6 +157,7 @@
 			<row>0100000</row>
 			<row>0100000</row>
 			<row>0111110</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -157,6 +170,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -169,6 +183,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -181,6 +196,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0011100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -193,6 +209,7 @@
 			<row>0100000</row>
 			<row>0100000</row>
 			<row>0100000</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -205,6 +222,7 @@
 			<row>0100010</row>
 			<row>0100100</row>
 			<row>0011010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -217,6 +235,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -229,6 +248,7 @@
 			<row>0000010</row>
 			<row>0100010</row>
 			<row>0011100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -241,6 +261,7 @@
 			<row>0001000</row>
 			<row>0001000</row>
 			<row>0001000</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -253,6 +274,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0011100</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -265,6 +287,7 @@
 			<row>0010100</row>
 			<row>0010100</row>
 			<row>0001000</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -277,6 +300,7 @@
 			<row>0101010</row>
 			<row>0110110</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -289,6 +313,7 @@
 			<row>0100010</row>
 			<row>0100010</row>
 			<row>0100010</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -301,6 +326,7 @@
 			<row>0001000</row>
 			<row>0001000</row>
 			<row>0001000</row>
+			<row>0000000</row>
 		</bitmatrix>
 	</letter>
 	<letter>
@@ -313,6 +339,1112 @@
 			<row>0010000</row>
 			<row>0100000</row>
 			<row>0111110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0097</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0011100</row>
+			<row>0000010</row>
+			<row>0011110</row>
+			<row>0100010</row>
+			<row>0011110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0098</index>
+		<bitmatrix>
+			<row>0100000</row>
+			<row>0100000</row>
+			<row>0101100</row>
+			<row>0110010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0111100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0099</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0100000</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0100</index>
+		<bitmatrix>
+			<row>0000010</row>
+			<row>0000010</row>
+			<row>0011010</row>
+			<row>0100110</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0101</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0111110</row>
+			<row>0100000</row>
+			<row>0011110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>00102</index>
+		<bitmatrix>
+			<row>0001100</row>
+			<row>0010000</row>
+			<row>0111100</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0103</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0011110</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011110</row>
+			<row>0000010</row>
+			<row>0111100</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0104</index>
+		<bitmatrix>
+			<row>0100000</row>
+			<row>0100000</row>
+			<row>0101100</row>
+			<row>0110010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0105</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0106</index>
+		<bitmatrix>
+			<row>0000010</row>
+			<row>0000000</row>
+			<row>0000010</row>
+			<row>0000010</row>
+			<row>0000010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0107</index>
+		<bitmatrix>
+			<row>0100000</row>
+			<row>0100000</row>
+			<row>0100100</row>
+			<row>0101000</row>
+			<row>0110000</row>
+			<row>0101000</row>
+			<row>0100100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0108</index>
+		<bitmatrix>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0109</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0110100</row>
+			<row>0101010</row>
+			<row>0101010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0110</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0111100</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0111</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0112</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0101100</row>
+			<row>0110010</row>
+			<row>0100010</row>
+			<row>0111100</row>
+			<row>0100000</row>
+			<row>0100000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0113</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0011010</row>
+			<row>0100110</row>
+			<row>0100010</row>
+			<row>0011110</row>
+			<row>0000010</row>
+			<row>0000010</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0114</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0101100</row>
+			<row>0110010</row>
+			<row>0100000</row>
+			<row>0100000</row>
+			<row>0100000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0115</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0011110</row>
+			<row>0100000</row>
+			<row>0011100</row>
+			<row>0000010</row>
+			<row>0111100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0116</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0011100</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0117</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0118</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0010100</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0119</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0101010</row>
+			<row>0101010</row>
+			<row>0011110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0120</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0100010</row>
+			<row>0010100</row>
+			<row>0001000</row>
+			<row>0010100</row>
+			<row>0100010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0121</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011110</row>
+			<row>0000010</row>
+			<row>0111100</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0101</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0111110</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0048</index>
+		<bitmatrix>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0100110</row>
+			<row>0101010</row>
+			<row>0110010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0049</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0011000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0050</index>
+		<bitmatrix>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0000010</row>
+			<row>0001100</row>
+			<row>0010000</row>
+			<row>0100000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0051</index>
+		<bitmatrix>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0000010</row>
+			<row>0001100</row>
+			<row>0000010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>052</index>
+		<bitmatrix>
+			<row>0000110</row>
+			<row>0001010</row>
+			<row>0010010</row>
+			<row>0100010</row>
+			<row>0111110</row>
+			<row>0000010</row>
+			<row>0000010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>053</index>
+		<bitmatrix>
+			<row>0111110</row>
+			<row>0100000</row>
+			<row>0111100</row>
+			<row>0000010</row>
+			<row>0000010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0054</index>
+		<bitmatrix>
+			<row>0001100</row>
+			<row>0010000</row>
+			<row>0100000</row>
+			<row>0111100</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0055</index>
+		<bitmatrix>
+			<row>0111110</row>
+			<row>0100010</row>
+			<row>0000010</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0056</index>
+		<bitmatrix>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0057</index>
+		<bitmatrix>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0011110</row>
+			<row>0000010</row>
+			<row>0000100</row>
+			<row>0011000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0036</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0011110</row>
+			<row>0101000</row>
+			<row>0011100</row>
+			<row>0001010</row>
+			<row>0111100</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0162</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0011100</row>
+			<row>0100000</row>
+			<row>0011100</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0128</index>
+		<bitmatrix>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>1111000</row>
+			<row>0100000</row>
+			<row>1111000</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0163</index>
+		<bitmatrix>
+			<row>0001110</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0111100</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0165</index>
+		<bitmatrix>
+			<row>0100010</row>
+			<row>0010100</row>
+			<row>0001000</row>
+			<row>0011100</row>
+			<row>0001000</row>
+			<row>0011100</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0164</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0010100</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0043</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0111110</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0045</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0042</index>
+		<bitmatrix>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0047</index>
+		<bitmatrix>
+			<row>0000010</row>
+			<row>0000100</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0100000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0247</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0061</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0111110</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0037</index>
+		<bitmatrix>
+			<row>0100010</row>
+			<row>0100100</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0010010</row>
+			<row>0100010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0137</index>
+		<bitmatrix>
+			<row>0100010</row>
+			<row>0100100</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0010101</row>
+			<row>0100101</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0034</index>
+		<bitmatrix>
+			<row>0010100</row>
+			<row>0010100</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0039</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0035</index>
+		<bitmatrix>
+			<row>0010100</row>
+			<row>0010100</row>
+			<row>0111110</row>
+			<row>0010100</row>
+			<row>0010100</row>
+			<row>0111110</row>
+			<row>0010100</row>
+			<row>0010100</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0064</index>
+		<bitmatrix>
+			<row>0011110</row>
+			<row>0100001</row>
+			<row>0101101</row>
+			<row>0101101</row>
+			<row>0101111</row>
+			<row>0100000</row>
+			<row>0011111</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0038</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0010100</row>
+			<row>0001000</row>
+			<row>0011010</row>
+			<row>0101100</row>
+			<row>0100100</row>
+			<row>0011010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0095</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0111110</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0040</index>
+		<bitmatrix>
+			<row>0000110</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0001000</row>
+			<row>0000110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0041</index>
+		<bitmatrix>
+			<row>0110000</row>
+			<row>0001000</row>
+			<row>0000100</row>
+			<row>0000100</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0110000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0044</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0010000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0046</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0059</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0010000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0058</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0191</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0100000</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0063</index>
+		<bitmatrix>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0000010</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>161</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0033</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+			<row>0001000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0092</index>
+		<bitmatrix>
+			<row>0100000</row>
+			<row>0010000</row>
+			<row>0010000</row>
+			<row>0001000</row>
+			<row>0000100</row>
+			<row>0000100</row>
+			<row>0000010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0124</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>00123</index>
+		<bitmatrix>
+			<row>0000110</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0125</index>
+		<bitmatrix>
+			<row>0000110</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0000110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0060</index>
+		<bitmatrix>
+			<row>0000010</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0001000</row>
+			<row>0000100</row>
+			<row>0000010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0062</index>
+		<bitmatrix>
+			<row>0100000</row>
+			<row>0010000</row>
+			<row>0001000</row>
+			<row>0000100</row>
+			<row>0001000</row>
+			<row>0010000</row>
+			<row>0100000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0091</index>
+		<bitmatrix>
+			<row>0001110</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0093</index>
+		<bitmatrix>
+			<row>0111000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0001000</row>
+			<row>0111000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0167</index>
+		<bitmatrix>
+			<row>0011110</row>
+			<row>0100000</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0011100</row>
+			<row>0000010</row>
+			<row>0111100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0182</index>
+		<bitmatrix>
+			<row>0011110</row>
+			<row>0111010</row>
+			<row>0111010</row>
+			<row>0011010</row>
+			<row>0000010</row>
+			<row>0000010</row>
+			<row>0000010</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0181</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100110</row>
+			<row>0111010</row>
+			<row>0100000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0096</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0000100</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0094</index>
+		<bitmatrix>
+			<row>0001000</row>
+			<row>0010100</row>
+			<row>0100010</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0126</index>
+		<bitmatrix>
+			<row>0011001</row>
+			<row>0100110</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0169</index>
+		<bitmatrix>
+			<row>0111110</row>
+			<row>1000001</row>
+			<row>1001101</row>
+			<row>1010001</row>
+			<row>1001101</row>
+			<row>1000001</row>
+			<row>0111110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0174</index>
+		<bitmatrix>
+			<row>0111110</row>
+			<row>1000001</row>
+			<row>1011101</row>
+			<row>1011001</row>
+			<row>1010101</row>
+			<row>1000001</row>
+			<row>0111110</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0153</index>
+		<bitmatrix>
+			<row>1110101</row>
+			<row>0100111</row>
+			<row>0100101</row>
+			<row>0100101</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0223</index>
+		<bitmatrix>
+			<row>0011000</row>
+			<row>0100100</row>
+			<row>0101100</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0101100</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
+		<index>0196</index>
+		<bitmatrix>
+			<row>0010100</row>
+			<row>0000000</row>
+			<row>0011100</row>
+			<row>0100010</row>
+			<row>0111110</row>
+			<row>0100010</row>
+			<row>0100010</row>
+			<row>0100010</row>
 		</bitmatrix>
 	</letter>
 </letters>

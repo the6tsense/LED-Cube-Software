@@ -2,13 +2,15 @@
 
 using namespace std;
 
-usbHandler::usbHandler() : m_port(0) {}
+UsbHandler::UsbHandler() : m_port(0)
+{}
 
-usbHandler::~usbHandler() {
+UsbHandler::~UsbHandler()
+{
     RS232_CloseComport(m_port);
 }
 
-bool usbHandler::openPort(void)
+bool UsbHandler::openPort(void)
 {
     //initialize variables
     int found = 0;
@@ -71,7 +73,7 @@ bool usbHandler::openPort(void)
     return true;
 }
 
-void usbHandler::test(bool xy) {
+void UsbHandler::test(bool xy) {
     unsigned char* stream = (unsigned char*) malloc(105 * sizeof(unsigned char));
 
     for(int i = 0; i < 105; i++) {
@@ -95,7 +97,7 @@ void usbHandler::test(bool xy) {
     free(stream);
 }
 
-void usbHandler::sendUpdate(void) {
+void UsbHandler::sendUpdate(void) {
     int count = 0;
     int bytes = ceil(pow(Effect::getCubeSize(), 3.0) / 7);
     unsigned char* const stream = (unsigned char*) malloc(bytes * sizeof(unsigned char));
@@ -111,7 +113,7 @@ void usbHandler::sendUpdate(void) {
                     count = 0;
                 }
 
-                streamChar |= (*Effect::s_cubearray(x, y, z) << count);
+                streamChar |= (Effect::cube()(x, y, z) << count);
                 count ++;
             }
         }

@@ -5,17 +5,18 @@
 #include <math.h>
 #include <stdlib.h>
 
-class array3d {
+class Array3d
+{
 private:
    int cubeSize;
    bool* data;
 
 public:
-   array3d(int arraySize);
-   array3d(const array3d& obj);
-   ~array3d();
+   Array3d(int arraySize);
+   Array3d(const Array3d& obj);
+   ~Array3d();
 
-   bool* operator()(int x, int y, int z);
+   bool& operator()(int x, int y, int z);
 };
 
 #endif // ARRAY3D_H

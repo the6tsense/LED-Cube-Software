@@ -1,8 +1,10 @@
 #include "raineffect.h"
 
-RainEffect::RainEffect() :
-    m_time(200)
-{}
+RainEffect::RainEffect(QString name)
+{
+    setTime(200);
+    setKey(name);
+}
 
 void RainEffect::calc(int status)
 {
@@ -26,7 +28,7 @@ void RainEffect::calc(int status)
         {
             int x = rand() % getCubeSize();
             int y = rand() % getCubeSize();
-            *s_cubearray(x, y, getCubeSize() - 1) = true;
+            cube()(x, y, getCubeSize() - 1) = true;
         }
     }
 }

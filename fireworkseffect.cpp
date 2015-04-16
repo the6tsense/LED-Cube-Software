@@ -1,30 +1,34 @@
 #include "fireworkseffect.h"
 
 FireworksEffect::FireworksEffect(QString key) :
-    m_time(200),
-    m_key(key),
+    m_stat(0),
     m_partAnchor(nullptr)
-{}
+{
+    setTime(200);
+    setKey(key);
+}
 
 void FireworksEffect::calc(int status)
 {
-    if(status == 0)
+    Q_UNUSED(status)
+
+    if(m_stat == 0)
     {
         m_zTarget = rand() % (getCubeSize() / 2) + getCubeSize() / 2;
         m_xSource = rand() % getCubeSize();
         m_ySource = rand() % getCubeSize();
         m_z = 0;
     }
-    else if(status < m_zTarget)
+    else if(m_stat < m_zTarget)
     {
         if(m_z != 0)
         {
-            *s_cubearray(m_xSource, m_ySource, m_z - 1) = false;
+            cube()(m_xSource, m_ySource, m_z - 1) = false;
         }
-        *s_cubearray(m_xSource, m_ySource, m_z) = true;
+        cube()(m_xSource, m_ySource, m_z) = true;
         m_z++;
     }
-    else if(status == m_zTarget)
+    else if(m_stat == m_zTarget)
     {
         int particleAmount = rand() % getCubeSize() * 5 + getCubeSize() * 2;
         Particle* part = nullptr;
@@ -57,7 +61,7 @@ void FireworksEffect::calc(int status)
         }
 
     }
-    else if(status > m_zTarget)
+    else if(m_stat > m_zTarget)
     {
         Particle* part = m_partAnchor;
         bool alife = false;
@@ -72,29 +76,43 @@ void FireworksEffect::calc(int status)
 
             if(x < 0 || y < 0 || z < 0 ||
                 x >= getCubeSize() || y >= getCubeSize() || z >= getCubeSize()
-                || part->getLife() < (status - m_zTarget))
+                || part->getLife() < (m_stat - m_zTarget))
             {
                 part = part->getNext();
                 continue;
             }
 
             alife = true;
-            *s_cubearray(x, y, z) = true;
+            cube()(x, y, z) = true;
             part->calc();
             part = part->getNext();
         }
 
         if(!alife)
         {
-            Particle* part = m_partAnchor;
-            Particle* partNext;
+            deleteParticles();
 
-            while(part != nullptr)
-            {
-                partNext = part->getNext();
-                delete(part);
-                part = partNext;
-            }
+            m_stat = -1;
         }
+    }
+    m_stat++;
+}
+
+void FireworksEffect::end(void)
+{
+    deleteParticles();
+    m_stat = 0;
+}
+
+void FireworksEffect::deleteParticles(void)
+{
+    Particle* part = m_partAnchor;
+    Particle* partNext;
+
+    while(part != nullptr)
+    {
+        partNext = part->getNext();
+        delete(part);
+        part = partNext;
     }
 }

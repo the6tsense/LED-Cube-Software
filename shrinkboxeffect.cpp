@@ -1,89 +1,65 @@
 #include "shrinkboxeffect.h"
 
-ShrinkBoxEffect::ShrinkBoxEffect() :
-    m_time(200)
-{}
+ShrinkBoxEffect::ShrinkBoxEffect(QString name) :
+    m_stat(0)
+{
+    setKey(name);
+}
+
+int ShrinkBoxEffect::getTime(void)
+{
+    return 10 * getCubeSize();
+}
 
 void ShrinkBoxEffect::calc(int status)
 {
-    if(status == 0)
-    {
-        m_edge = rand() % 8;
-    }
-
     clearCube();
 
-    if(status < getCubeSize())
+    if(status % (getCubeSize() * 2) == 0)
     {
-        for(int x = 0; x < getCubeSize(); x++)
+        //0, 1, 2, 3, 5, 6, 7, 8
+        int randNum = rand() % 2;
+        if(randNum % 2 == 0)
         {
-            for(int y = 0; y < getCubeSize(); y++)
-            {
-                for(int z = 0; z < getCubeSize(); z++)
-                {
-                    if(m_edge % 2 == 0)
-                    {
-                        if((x == 0 && y <= status && z <= status) ||
-                           (x <= status && y == 0 && z <= status) ||
-                           (x <= status && y <= status && z == 0) ||
-                           (x == status && y <= status && z <= status) ||
-                           (x <= status && y == status && z <= status) ||
-                           (x <= status && y <= status && z == status))
-                        {
-                            *mirror(x, y, z, m_edge) = true;
-                        }
-                    }
-                    else
-                    {
-                        if((x == getCubeSize() - 1 && y >= status && z >= status) ||
-                           (x >= status && y == getCubeSize() - 1 && z >= status) ||
-                           (x >= status && y >= status && z == getCubeSize() - 1) ||
-                           (x == status && y >= status && z >= status) ||
-                           (x >= status && y == status && z >= status) ||
-                           (x >= status && y >= status && z == status))
-                        {
-                            *mirror(x, y, z, m_edge - 1) = true;
-                        }
-                    }
-                }
-            }
+            m_even = true;
+        }
+        else
+        {
+            m_even = false;
+        }
+
+        m_side = randNum * 2 + 1;
+
+        m_stat = 0;
+        std::cout << randNum << std::endl;
+    }
+
+    if(status % getCubeSize() == 0)
+    {
+        m_isGrowing = !m_isGrowing;
+    }
+
+    for(int x = 0; x < m_stat; x++)
+    {
+        for(int y = 0; y < m_stat; y++)
+        {
+            mirror(x, y, 0, m_side) = true;
+            mirror(0, x, y, m_side) = true;
+            mirror(y, 0, x, m_side) = true;
+            mirror(x, y, m_stat - 1, m_side) = true;
+            mirror(m_stat - 1, x, y, m_side) = true;
+            mirror(y, m_stat - 1, x, m_side) = true;
         }
     }
-    else if(status > getCubeSize())
+
+    std::cout << "m_stat: " << m_stat << std::endl;
+
+    if(m_isGrowing)
     {
-        int statNew = getCubeSize() - status / 2;
-        for(int x = 0; x < getCubeSize(); x++)
-        {
-            for(int y = 0; y < getCubeSize(); y++)
-            {
-                for(int z = 0; z < getCubeSize(); z++)
-                {
-                    if(m_edge % 2 == 0)
-                    {
-                        if((x == 0 && y <= statNew && z <= statNew) ||
-                           (x <= statNew && y == 0 && z <= statNew) ||
-                           (x <= statNew && y <= statNew && z == 0) ||
-                           (x == statNew && y <= statNew && z <= statNew) ||
-                           (x <= statNew && y == statNew && z <= statNew) ||
-                           (x <= statNew && y <= statNew && z == statNew))
-                        {
-                            *mirror(x, y, z, m_edge) = true;
-                        }
-                    }
-                    else
-                    {
-                        if((x == getCubeSize() - 1 && y >= statNew && z >= statNew) ||
-                           (x >= statNew && y == getCubeSize() - 1 && z >= statNew) ||
-                           (x >= statNew && y >= statNew && z == getCubeSize() - 1) ||
-                           (x == statNew && y >= statNew && z >= statNew) ||
-                           (x >= statNew && y == statNew && z >= statNew) ||
-                           (x >= statNew && y >= statNew && z == statNew))
-                        {
-                            *mirror(x, y, z, m_edge - 1) = true;
-                        }
-                    }
-                }
-            }
-        }
+        m_stat++;
+    }
+    else
+    {
+        m_stat--;
     }
 }

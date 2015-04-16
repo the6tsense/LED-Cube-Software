@@ -1,27 +1,45 @@
 #include "randwarpeffect.h"
 
-RandWarpEffect::RandWarpEffect() :
-    m_time(getCubeSize() * 3 * 10)
-{}
+RandWarpEffect::RandWarpEffect(QString name) :
+    m_side(0),
+    m_pattern(nullptr)
+{
+    setKey(name);
+}
+
+int RandWarpEffect::getTime(void)
+{
+    return getCubeSize() * 3 * 10;
+}
+
+void RandWarpEffect::end(void)
+{
+    delete(m_pattern);
+}
 
 void RandWarpEffect::calc(int status)
 {
-    static int side = 0;
-    static int* pattern = (int*) malloc(pow(getCubeSize(), 2) * sizeof(int));
+    if(m_pattern == nullptr)
+    {
+        m_pattern = new Array2d(getCubeSize(), getCubeSize());
+    }
 
     if(status % (getCubeSize() * 3) == 0)
     {
         int newSide = rand() % 6;
 
-        while(newSide == side)
+        while(newSide == m_side)
         {
             newSide = rand() % 6;
         }
-        side = newSide;
+        m_side = newSide;
 
-        for(int i = 0; i < pow(getCubeSize(), 2); i++)
+        for(int x = 0; x < getCubeSize(); x++)
         {
-            pattern[i] = rand() % getCubeSize();
+            for(int y = 0; y < getCubeSize(); y++)
+            {
+                m_pattern->operator()(x, y) = (char) (rand() % getCubeSize());
+            }
         }
         clearCube();
     }
@@ -34,9 +52,9 @@ void RandWarpEffect::calc(int status)
             {
                 for(int y = 0; y < getCubeSize(); y++)
                 {
-                    if(pattern[x + y * getCubeSize()] > status % (getCubeSize() * 3) - 1)
+                    if((int)m_pattern->operator()(x, y) > status % (getCubeSize() * 3) - 1)
                     {
-                        *mirror(x, y, (status % (getCubeSize() * 3) - 1), side) = false;
+                        mirror(x, y, (status % (getCubeSize() * 3) - 1), m_side) = false;
                     }
                 }
             }
@@ -46,14 +64,14 @@ void RandWarpEffect::calc(int status)
         {
             for(int y = 0; y < getCubeSize(); y++)
             {
-                if(pattern[x + y * getCubeSize()] >= status % (getCubeSize() * 3))
+                if((int)m_pattern->operator()(x, y) >= status % (getCubeSize() * 3))
                 {
-                    *mirror(x, y, status % (getCubeSize() * 3), side) = true;
+                    mirror(x, y, status % (getCubeSize() * 3), m_side) = true;
                 }
                 //end effect
                 else
                 {
-                    *mirror(x, y, status % (getCubeSize() * 3), side) = false;
+                    mirror(x, y, status % (getCubeSize() * 3), m_side) = false;
                 }
             }
         }
@@ -66,14 +84,13 @@ void RandWarpEffect::calc(int status)
             {
                 for(int y = 0; y < getCubeSize(); y++)
                 {
-                    if(pattern[x + y * getCubeSize()]
+                    if((int)m_pattern->operator()(x, y)
                        <= (status % (getCubeSize() * 3) - 2 * getCubeSize() - 1))
                     {
-                        *mirror(x,
-                                        y,
-                                        (status % (getCubeSize() * 3) - 2 * getCubeSize() - 1),
-                                        side
-                                        ) = false;
+                        mirror(x,
+                               y,
+                               (status % (getCubeSize() * 3) - 2 * getCubeSize() - 1),
+                               m_side) = false;
                     }
                 }
             }
@@ -83,13 +100,13 @@ void RandWarpEffect::calc(int status)
         {
             for(int y = 0; y < getCubeSize(); y++)
             {
-                if(pattern[x + y * getCubeSize()] <= (status % (getCubeSize() * 3) - 2 * getCubeSize()))
+                if((int)m_pattern->operator()(x, y) <= (status % (getCubeSize() * 3) - 2 * getCubeSize()))
                 {
-                    *mirror(x, y, (status % (getCubeSize() * 3) - 2 * getCubeSize()), side) = true;
+                    mirror(x, y, (status % (getCubeSize() * 3) - 2 * getCubeSize()), m_side) = true;
                 }
                 else
                 {
-                    *mirror(x, y, (status % (getCubeSize() * 3) - 2 * getCubeSize()), side) = false;
+                    mirror(x, y, (status % (getCubeSize() * 3) - 2 * getCubeSize()), m_side) = false;
                 }
             }
         }

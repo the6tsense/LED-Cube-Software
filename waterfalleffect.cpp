@@ -1,9 +1,10 @@
 #include "waterfalleffect.h"
 
-WaterfallEffect::WaterfallEffect() :
-    m_time(200)
-{}
-
+WaterfallEffect::WaterfallEffect(QString name)
+{
+    setTime(200);
+    setKey(name);
+}
 
 void WaterfallEffect::calc(int status)
 {
@@ -46,24 +47,24 @@ void WaterfallEffect::calc(int status)
         m_y = getCubeSize() - 1;
     }
 
-    *s_cubearray(m_x, m_y, getCubeSize() - 1) = true;
+    cube()(m_x, m_y, getCubeSize() - 1) = true;
     if((m_x - 1) >= 0)
     {
-        *s_cubearray(m_x - 1, m_y, getCubeSize() - 1) = true;
+        cube()(m_x - 1, m_y, getCubeSize() - 1) = true;
     }
 
     if((m_x + 1) < getCubeSize() - 1)
     {
-        *s_cubearray(m_x + 1, m_y, getCubeSize() - 1) = true;
+        cube()(m_x + 1, m_y, getCubeSize() - 1) = true;
     }
 
     if((m_y - 1) >= 0)
     {
-        *s_cubearray(m_x, m_y - 1, getCubeSize() - 1) = true;
+        cube()(m_x, m_y - 1, getCubeSize() - 1) = true;
     }
 
     if((m_y + 1) < getCubeSize() - 1)
     {
-        *s_cubearray(m_x, m_y + 1, getCubeSize() - 1) = true;
+        cube()(m_x, m_y + 1, getCubeSize() - 1) = true;
     }
 }

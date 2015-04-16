@@ -2,47 +2,36 @@
 
 CubeWindow::CubeWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::CubeWindow)
+    ui(new Ui::CubeWindow),
+    m_effect(new EffectHandler(this))
 {
     ui->setupUi(this);
-    colourSelect = new QButtonGroup(this);
-    colourSelect->addButton(ui->RadioButton_RGB);
-    colourSelect->addButton(ui->RadioButton_singleColour);
+    m_colourSelect = new QButtonGroup(this);
+    m_colourSelect->addButton(ui->RadioButton_RGB);
+    m_colourSelect->addButton(ui->RadioButton_singleColour);
 
-    initList();
     initComboBox();
+
+    for(auto& effect : m_effect->getEffects())
+    {
+        ui->List_effects->addItem(effect);
+    }
 }
 
 CubeWindow::~CubeWindow()
 {
     delete ui;
-}
-
-void CubeWindow::initList(void)
-{
-    ui->List_effects->addItem("Wave");
-    ui->List_effects->addItem("WaveXY");
-    ui->List_effects->addItem("WaveMid");
-    ui->List_effects->addItem("Plains");
-    ui->List_effects->addItem("Rain");
-    ui->List_effects->addItem("Waterfall");
-    ui->List_effects->addItem("OneAfterAnother");
-    ui->List_effects->addItem("randWarpEffect");
-    ui->List_effects->addItem("Firework");
-    ui->List_effects->addItem("ShrinkBox");
+    delete m_effect;
 }
 
 void CubeWindow::initComboBox(void)
 {
-<<<<<<< HEAD
-=======
     m_fontAnchor = new Font();
-    m_fontAnchor->readFont("D:/Dokumente/GitHub/LED-Cube-Software/ressources/defaultFont.txt");
+    m_fontAnchor->readFont("D:/Dokumente/GitHub/LED-Cube-Software/ressources/DefaultFont.txt");
 
     ui->comboBox_font->addItem("default");
 
     ui->comboBox_displayType->addItem("Outside");
->>>>>>> parent of 95198ee... Revert "effects are now objects"
 }
 
 //Action button pressed start/stop the animations
@@ -55,18 +44,19 @@ void CubeWindow::on_Button_action_toggled(bool checked)
         ui->RadioButton_RGB->setEnabled(false);
         ui->RadioButton_singleColour->setEnabled(false);
 
-        //create new effect object
-        effect = new EffectHandler(this);
-
         Effect::setCubeSize(ui->SpinBox_size->value());
-        delete(&Effect::s_cubearray);
-        Effect::s_cubearray = *(new array3d(Effect::getCubeSize()));
 
         //try to start animations
-        if(!effect->start())
+        if(!m_effect->start())
         {
             //port not found
             ui->Button_action->setChecked(false);
+
+            //unblock all cube related settings
+            ui->SpinBox_size->setEnabled(true);
+            ui->RadioButton_RGB->setEnabled(true);
+            ui->RadioButton_singleColour->setEnabled(true);
+
             setStatus(QString("Error opening comPort"), QString("#FF0000"));
         }
         else
@@ -84,7 +74,7 @@ void CubeWindow::on_Button_action_toggled(bool checked)
     setStatus(QString("Stopped"), QString("#868A08"));
 
     //destroy effect object
-    delete(effect);
+    m_effect->stop();
 }
 
 void CubeWindow::on_Button_addAll_clicked()
@@ -153,10 +143,30 @@ void CubeWindow::on_pushButton_addTextEffect_clicked()
         std::cout << "No name." << std::endl;
         return;
     }
+
+    if(ui->textEdit_displayText->toPlainText().isEmpty())
+    {
+        std::cout << "You forgot your text!" << std::endl;
+        return;
+    }
+
+    for(auto& effect : m_effect->getEffects())
+    {
+        if(!effect.compare(ui->lineEdit_effectName->text()))
+        {
+            std::cout << "Effect already exists. Please choose another name." << std::endl;
+            return;
+        }
+    }
+
     TextEffect* newEffect = new TextEffect(ui->lineEdit_effectName->text(),
                                           ui->textEdit_displayText->toPlainText(),
                                           ui->comboBox_font->currentIndex(),
-                                          ui->comboBox_displayType->currentIndex());
+                                          ui->comboBox_displayType->currentIndex(),
+                                          ui->comboBox_effectType->currentIndex());
 
-    ui->List_effects->addItem(newEffect->getName());
+    m_effect->addEffect(newEffect);
+    ui->List_effects->addItem(newEffect->getKey());
+    ui->lineEdit_effectName->clear();
+    ui->textEdit_displayText->clear();
 }

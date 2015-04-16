@@ -1,8 +1,11 @@
 #include "font.h"
 
+//#define DEBUG_FONTREADER
+
 int Font::s_fontAmount = 0;
 
 Font::Font() :
+    m_fontName(""),
     m_next(nullptr)
 {
     m_font = new Letter();
@@ -20,6 +23,11 @@ Font::~Font()
         delete(currentLetter);
     }
     s_fontAmount--;
+}
+
+QString Font::getName(void)
+{
+    return m_fontName;
 }
 
 Letter* Font::getLetter(int letter)
@@ -54,6 +62,7 @@ int Font::readFont(QString filepath)
     Letter* currentLetter = m_font;
 
     std::fstream fs(filepath.toStdString(), std::fstream::in);
+
 
     //open file
     if(fs.is_open())
@@ -274,6 +283,25 @@ int Font::readFont(QString filepath)
                         }
                         break;
 
+                    case 'n':
+                        if(firstStage == 1)
+                        {
+                            if(st.contains("name"))
+                            {
+                                firstIndex = st.indexOf('>');
+                                firstIndex++;
+                                int size = st.indexOf('<', firstIndex) - firstIndex;
+
+                                QStringRef sub(&st, firstIndex, size);
+                                m_fontName = sub.toString();
+                            }
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                        break;
+
                     case 'r':
                         //check stage
                         if(thirdStage)
@@ -297,7 +325,8 @@ int Font::readFont(QString filepath)
                                 if(size != width)
                                 {
                                     std::cout
-                                            << "Not enough bits in bitmatrixrow."
+                                            << "Not the correct amount of bits in bitmatrixrow. "
+                                            << letterNum
                                             << std::endl;
                                     break;
                                 }
@@ -362,6 +391,7 @@ int Font::readFont(QString filepath)
             else
             {
                 std::cout << "not <" << std::endl;
+                return 1;
             }
 
             fs.getline(buf, 256);

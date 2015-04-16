@@ -9,6 +9,13 @@
 #include "cubewindow.h"
 #include "fireworkseffect.h"
 #include "mathfunctioneffect.h"
+#include "oneafteranothereffect.h"
+#include "plainseffect.h"
+#include "raineffect.h"
+#include "randwarpeffect.h"
+#include "shrinkboxeffect.h"
+#include "texteffect.h"
+#include "waterfalleffect.h"
 #include <stdlib.h>
 #include <time.h>
 #include <thread>
@@ -16,7 +23,7 @@
 #include <vector>
 
 class CubeWindow;
-class usbHandler;
+class UsbHandler;
 
 class EffectHandler {
 private:
@@ -25,13 +32,12 @@ private:
     int m_status;
     unsigned int m_effectSpeed;
     std::vector<Effect*> m_effects;
-    usbHandler* m_usb;
-    QString m_currentEffect;
+    UsbHandler* m_usb;
+    Effect* m_currentEffect;
     vector<thread> m_threads;
     const CubeWindow* m_window;
 
     void effectLoop(void);
-    void effect(void);
     void initEffectList(void);
 
 public:
@@ -39,8 +45,11 @@ public:
     ~EffectHandler();
 
     bool start(void);
+    void stop(void);
     void changeEffect(int effectNum);
     void nextEffect(void);
+    void addEffect(Effect* effect);
+    vector<QString> getEffects(void);
 };
 
 #endif // EFFECTHANDLER_H

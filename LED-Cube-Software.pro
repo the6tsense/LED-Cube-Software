@@ -20,7 +20,6 @@ SOURCES += main.cpp\
     array3d.cpp \
     mathfunctions.cpp \
     particle.cpp \
-    cubefont.cpp \
     texteffect.cpp \
     letter.cpp \
     font.cpp \
@@ -32,7 +31,9 @@ SOURCES += main.cpp\
     oneafteranothereffect.cpp \
     fireworkseffect.cpp \
     shrinkboxeffect.cpp \
-    mathfunctioneffect.cpp
+    mathfunctioneffect.cpp \
+    array2d.cpp \
+    gameoflifeeffect.cpp
 
 HEADERS  += cubewindow.h \
     effecthandler.h \
@@ -42,7 +43,6 @@ HEADERS  += cubewindow.h \
     array3d.h \
     mathfunctions.h \
     particle.h \
-    cubefont.h \
     texteffect.h \
     letter.h \
     font.h \
@@ -55,7 +55,9 @@ HEADERS  += cubewindow.h \
     fireworkseffect.h \
     shrinkboxeffect.h \
     mathfunctioneffect.h \
-    constants.h
+    constants.h \
+    array2d.h \
+    gameoflifeeffect.h
 
 FORMS    += cubewindow.ui
 

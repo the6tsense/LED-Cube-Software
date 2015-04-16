@@ -45,11 +45,10 @@ private slots:
 
 private:
     Ui::CubeWindow* ui;
-    EffectHandler* effect;
-    QButtonGroup* colourSelect;
+    EffectHandler* m_effect;
+    QButtonGroup* m_colourSelect;
     Font* m_fontAnchor;
 
-    void initList(void);
     void initComboBox(void);
 };
 

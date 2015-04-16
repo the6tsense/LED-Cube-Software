@@ -6,13 +6,16 @@
 class ShrinkBoxEffect : public Effect
 {
 private:
-    int m_time;
-    int m_edge;
+    int m_side;
+    int m_stat;
+    bool m_even;
+    bool m_isGrowing;
 
 public:
-    ShrinkBoxEffect();
+    ShrinkBoxEffect(QString name);
 
     void calc(int status);
+    int getTime(void);
 };
 
 #endif // SHRINKBOXEFFECT_H

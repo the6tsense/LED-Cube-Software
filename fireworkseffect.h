@@ -9,18 +9,20 @@
 class FireworksEffect : public Effect
 {
 private:
-    int m_time;
     int m_zTarget;
     int m_xSource;
     int m_ySource;
     int m_z;
-    QString m_key;
+    int m_stat;
     Particle* m_partAnchor;
+
+    void deleteParticles(void);
 
 public:
     FireworksEffect(QString key);
 
     void calc(int status);
+    void end(void);
 };
 
 #endif // FOREWORKSEFFECT_H

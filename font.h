@@ -21,6 +21,7 @@ public:
     Font();
     ~Font();
 
+    QString getName(void);
     Letter* getLetter(int letter);
 
     /*

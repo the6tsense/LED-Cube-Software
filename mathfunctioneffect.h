@@ -10,10 +10,9 @@ private:
     static MathFunctions* s_mathFunc;
 
     int (MathFunctions::*m_func)(int, int, int);
-    int m_time;
 
 public:
-    MathFunctionEffect(int endtime, int (MathFunctions::*function)(int, int, int));
+    MathFunctionEffect(int endtime, QString name, int (MathFunctions::*function)(int, int, int));
 
     void calc(int status);
 };

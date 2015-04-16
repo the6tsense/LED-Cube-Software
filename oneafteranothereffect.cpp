@@ -1,15 +1,19 @@
 #include "oneafteranothereffect.h"
 
-OneAfterAnotherEffect::OneAfterAnotherEffect() :
-    m_time(2 * pow(getCubeSize(), 3)),
+OneAfterAnotherEffect::OneAfterAnotherEffect(QString name) :
     m_x(0),
     m_y(0),
-    m_z(0)
-{}
+    m_z(0),
+    m_on(true)
+{
+    setKey(name);
+}
 
 void OneAfterAnotherEffect::calc(int status)
 {
-    *s_cubearray(m_x, m_y, m_z) = true;
+    Q_UNUSED(status);
+
+    cube()(m_x, m_y, m_z) = m_on;
 
     m_x++;
 
@@ -27,5 +31,12 @@ void OneAfterAnotherEffect::calc(int status)
         m_x = 0;
         m_y = 0;
         m_z = 0;
+        m_on = !m_on;
     }
+}
+
+
+int OneAfterAnotherEffect::getTime(void)
+{
+    return 2 * pow(getCubeSize(), 3);
 }
