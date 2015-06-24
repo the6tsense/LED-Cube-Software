@@ -159,11 +159,12 @@ void CubeWindow::on_pushButton_addTextEffect_clicked()
         }
     }
 
+    //make multiple fonts possible
     TextEffect* newEffect = new TextEffect(ui->lineEdit_effectName->text(),
                                           ui->textEdit_displayText->toPlainText(),
-                                          ui->comboBox_font->currentIndex(),
-                                          ui->comboBox_displayType->currentIndex(),
-                                          ui->comboBox_effectType->currentIndex());
+                                          m_fontAnchor,
+                                          0,
+                                          0);
 
     m_effect->addEffect(newEffect);
     ui->List_effects->addItem(newEffect->getKey());

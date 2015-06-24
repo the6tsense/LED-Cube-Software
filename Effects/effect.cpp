@@ -96,6 +96,7 @@ bool& Effect::mirror(int x, int y, int z, int side)
             break;
         case 8:
             return cube()(s_cubeSize - x - 1, s_cubeSize - y - 1, s_cubeSize - z - 1);
+            break;
         default:
             std::cout << "Invalid side: " << side << std::endl;
             return cube()(0, 0, 0);

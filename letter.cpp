@@ -4,9 +4,9 @@ Letter::Letter() :
     m_width(0),
     m_height(0),
     m_letterNum(20),
-    m_letter(*(new std::vector<bool>(1))),
     m_next(nullptr)
 {
+    m_letter = std::vector<bool>(1);
     m_letter[0] = false;
 }
 
@@ -27,13 +27,27 @@ Letter::Letter(int width, int height, int letter) :
 {}
 
 Letter::~Letter()
-{
-    delete(&m_letter);
-}
+{}
 
-std::vector<bool>* Letter::getLetter(void)
+std::vector<bool>* Letter::getLetterVector(void)
 {
     return &m_letter;
+}
+
+Array2d Letter::getArray(void)
+{
+    Array2d out = Array2d(m_height, m_width);
+    int i = 0;
+
+    for(int x = 0; x < m_height; x++)
+    {
+        for(int y = 0; y < m_width; y++)
+        {
+            out(x, y) = m_letter[i++];
+        }
+    }
+
+    return out;
 }
 
 int Letter::getWidth(void)

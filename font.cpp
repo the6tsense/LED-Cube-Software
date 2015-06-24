@@ -41,7 +41,7 @@ Letter* Font::getLetter(int letter)
         }
         currentLetter = currentLetter->next();
     }
-    std::cout << "Letter not found." << std::endl;
+    std::cout << "Letter not found:" << letter << std::endl;
     return m_font;
 }
 

@@ -208,7 +208,5 @@ void EffectHandler::nextEffect()
     std::cout << "Effect not there." << std::endl;
 }
 
-/******************************** effect functions ************************************/
-
 
 

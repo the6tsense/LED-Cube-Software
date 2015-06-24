@@ -1,7 +1,7 @@
 #ifndef EFFECT_H
 #define EFFECT_H
 
-#include "array3d.h"
+#include "Array/array3d.h"
 #include <QString>
 
 class Effect

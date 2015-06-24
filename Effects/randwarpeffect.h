@@ -2,7 +2,7 @@
 #define RANDWARPEFFECT_H
 
 #include "effect.h"
-#include "array2d.h"
+#include "Array/array2d.h"
 
 class RandWarpEffect : public Effect
 {

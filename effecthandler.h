@@ -3,19 +3,19 @@
 
 #define M_PI 3.14159
 
-#include "effect.h"
+#include "Effects/effect.h"
 #include "usbhandler.h"
 #include "cubeTools.h"
 #include "cubewindow.h"
-#include "fireworkseffect.h"
-#include "mathfunctioneffect.h"
-#include "oneafteranothereffect.h"
-#include "plainseffect.h"
-#include "raineffect.h"
-#include "randwarpeffect.h"
-#include "shrinkboxeffect.h"
-#include "texteffect.h"
-#include "waterfalleffect.h"
+#include "Effects/fireworkseffect.h"
+#include "Effects/mathfunctioneffect.h"
+#include "Effects/oneafteranothereffect.h"
+#include "Effects/plainseffect.h"
+#include "Effects/raineffect.h"
+#include "Effects/randwarpeffect.h"
+#include "Effects/shrinkboxeffect.h"
+#include "Effects/texteffect.h"
+#include "Effects/waterfalleffect.h"
 #include <stdlib.h>
 #include <time.h>
 #include <thread>

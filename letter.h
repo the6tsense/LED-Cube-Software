@@ -1,6 +1,7 @@
 #ifndef LETTER_H
 #define LETTER_H
 
+#include "Array/array2d.h"
 #include <QString>
 #include <math.h>
 #include <stdlib.h>
@@ -22,7 +23,8 @@ public:
     Letter(int width, int height, int letter, std::vector<bool>* letterArray);
     ~Letter();
 
-    std::vector<bool>* getLetter(void);
+    std::vector<bool>* getLetterVector(void);
+    Array2d getArray(void);
     int getWidth(void);
     int getHeight(void);
     int getLetterIndex(void);

@@ -3,7 +3,6 @@
 
 #define DEBUG
 
-#include "array3d.h"
 #include <string>
 #include <iostream>
 #include <math.h>

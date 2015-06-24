@@ -1,5 +1,6 @@
 #include "cubewindow.h"
 #include "usbhandler.h"
+#include "Array/array2d.h"
 #include <QApplication>
 #include <thread>
 

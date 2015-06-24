@@ -5,6 +5,19 @@
 </size>
 <letters>
 	<letter>
+		<index>0032</index>
+		<bitmatrix>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+			<row>0000000</row>
+		</bitmatrix>
+	</letter>
+	<letter>
 		<index>0065</index>
 		<bitmatrix>
 			<row>0011100</row>

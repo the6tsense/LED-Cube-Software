@@ -2,7 +2,7 @@
 #define CUBEWINDOW_H
 
 #include "font.h"
-#include "texteffect.h"
+#include "Effects/texteffect.h"
 #include "effecthandler.h"
 #include "ui_cubewindow.h"
 #include <QPalette>

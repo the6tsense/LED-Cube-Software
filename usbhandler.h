@@ -7,7 +7,7 @@
 
 #include "cubeTools.h"
 #include "effecthandler.h"
-#include "effect.h"
+#include "Effects/effect.h"
 
 class EffectHandler;
 

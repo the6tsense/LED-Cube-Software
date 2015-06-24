@@ -17,47 +17,49 @@ SOURCES += main.cpp\
     effecthandler.cpp \
     usbhandler.cpp \
     rs232.c \
-    array3d.cpp \
-    mathfunctions.cpp \
     particle.cpp \
-    texteffect.cpp \
     letter.cpp \
     font.cpp \
-    effect.cpp \
-    plainseffect.cpp \
-    raineffect.cpp \
-    waterfalleffect.cpp \
-    randwarpeffect.cpp \
-    oneafteranothereffect.cpp \
-    fireworkseffect.cpp \
-    shrinkboxeffect.cpp \
-    mathfunctioneffect.cpp \
-    array2d.cpp \
-    gameoflifeeffect.cpp
+    Effects/effect.cpp \
+    Effects/fireworkseffect.cpp \
+    Effects/gameoflifeeffect.cpp \
+    Effects/mathfunctioneffect.cpp \
+    Effects/mathfunctions.cpp \
+    Effects/oneafteranothereffect.cpp \
+    Effects/plainseffect.cpp \
+    Effects/raineffect.cpp \
+    Effects/randwarpeffect.cpp \
+    Effects/shrinkboxeffect.cpp \
+    Effects/texteffect.cpp \
+    Effects/waterfalleffect.cpp \
+    Array/array2d.cpp \
+    Array/array3d.cpp
 
 HEADERS  += cubewindow.h \
     effecthandler.h \
     usbhandler.h \
     cubeTools.h \
     rs232.h \
-    array3d.h \
-    mathfunctions.h \
     particle.h \
     texteffect.h \
     letter.h \
     font.h \
     effect.h \
-    plainseffect.h \
-    raineffect.h \
-    waterfalleffect.h \
-    randwarpeffect.h \
-    oneafteranothereffect.h \
-    fireworkseffect.h \
-    shrinkboxeffect.h \
-    mathfunctioneffect.h \
     constants.h \
-    array2d.h \
-    gameoflifeeffect.h
+    Effects/effect.h \
+    Effects/fireworkseffect.h \
+    Effects/gameoflifeeffect.h \
+    Effects/mathfunctioneffect.h \
+    Effects/mathfunctions.h \
+    Effects/oneafteranothereffect.h \
+    Effects/plainseffect.h \
+    Effects/raineffect.h \
+    Effects/randwarpeffect.h \
+    Effects/shrinkboxeffect.h \
+    Effects/texteffect.h \
+    Effects/waterfalleffect.h \
+    Array/array2d.h \
+    Array/array3d.h
 
 FORMS    += cubewindow.ui
 
