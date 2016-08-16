@@ -34,6 +34,7 @@ void EffectHandler::initEffectList(void)
     m_effects.push_back(new RandWarpEffect("Random warp"));
     m_effects.push_back(new ShrinkBoxEffect("Shrink Box"));
     m_effects.push_back(new WaterfallEffect("Waterfall"));
+    m_effects.push_back(new GameOfLifeEffect("Game of Life"));
     m_effects.push_back(new MathFunctionEffect(3.14159 * 100, "Wave", &MathFunctions::linearWave));
     m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
                                                "Diagonal Wave",

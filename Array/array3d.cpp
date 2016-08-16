@@ -12,10 +12,11 @@ Array3d::Array3d(const Array3d& obj)
     data = (bool*) malloc(pow(cubeSize, 3.0) * sizeof(bool));
 
     bool* pdata = data;
+    bool* pobjData = obj.data;
 
     for(int i = 0; i < pow(cubeSize, 3.0); i++)
     {
-        *pdata = *(obj.data+i);
+        *pdata++ = *pobjData++;
     }
 }
 

@@ -16,6 +16,7 @@
 #include "Effects/shrinkboxeffect.h"
 #include "Effects/texteffect.h"
 #include "Effects/waterfalleffect.h"
+#include "Effects/gameoflifeeffect.h"
 #include <stdlib.h>
 #include <time.h>
 #include <thread>
