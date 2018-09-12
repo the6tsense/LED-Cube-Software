@@ -1,29 +1,20 @@
-#ifndef EFFECT_H
-#define EFFECT_H
+#ifndef SINGLECOLOUREFFECT_H
+#define SINGLECOLOUREFFECT_H
 
 #include "Array/array3d.h"
+#include "effect.h"
 #include <QString>
 
-class Effect
+class SingleColourEffect : public Effect
 {
 private:
     static int s_effectAmount;
     static int s_cubeSize;
     static Array3d* s_cubearray;
 
-    int m_time;
-    QString m_key;
-
 public:
-    Effect();
-    virtual ~Effect();
-
-    virtual void calc(int status) = 0;
-    virtual void end(void);
-    void setTime(int time);
-    virtual int getTime(void);
-    void setKey(QString key);
-    QString getKey(void);
+    SingleColourEffect();
+    virtual ~SingleColourEffect();
 
     static Array3d& cube(void);
     static int getEffectAmount(void);
@@ -31,7 +22,7 @@ public:
     static void setCubeSize(int cubeSize);
 
     /*effect helper*/
-    static bool& mirror(int x, int y, int z, int side);
+    static unsigned char& mirror(int x, int y, int z, int side);
     static void switchLayer(int z, int side, bool isOn);
     static void shiftLayer(int z, int side, bool isInvert);
     static void clearCube(void);

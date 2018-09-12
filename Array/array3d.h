@@ -8,15 +8,17 @@
 class Array3d
 {
 private:
-   int cubeSize;
-   bool* data;
+   int m_cubeSize;
+   unsigned char* m_data;
 
 public:
    Array3d(int arraySize);
    Array3d(const Array3d& obj);
    ~Array3d();
 
-   bool& operator()(int x, int y, int z);
+   unsigned char& operator()(int x, int y, int z);
+   void setAll(unsigned char value);
+   void clear();
 };
 
 #endif // ARRAY3D_H

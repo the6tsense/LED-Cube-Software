@@ -2,12 +2,16 @@
 #define CUBEWINDOW_H
 
 #include "font.h"
-#include "Effects/texteffect.h"
+#include "SingleColourEffects/texteffect.h"
 #include "effecthandler.h"
 #include "ui_cubewindow.h"
+#include "configdialog.h"
 #include <QPalette>
 #include <QMainWindow>
 #include <QFile>
+
+//TODO
+#include <QDebug>
 
 using namespace std;
 
@@ -26,27 +30,28 @@ public:
     ~CubeWindow();
 
     void setStatus(QString string, QString colour);
+    void updateAvailableEffects();
     vector<QString> getEffectList(void) const;
     bool isRandomized(void) const;
+    int getSelectedColour(void) const;
     unsigned int getEffectSpeed(void) const;
 
 private slots:
     void on_Button_action_toggled(bool checked);
-
     void on_Button_addAll_clicked();
-
     void on_Button_deleteAll_clicked();
-
     void on_Button_add_clicked();
-
     void on_Button_delete_clicked();
-
     void on_pushButton_addTextEffect_clicked();
+
+    void on_List_effects_doubleClicked(const QModelIndex &index);
+    void on_List_executeEffects_doubleClicked(const QModelIndex &index);
+
+    void on_actionConfigure_triggered();
 
 private:
     Ui::CubeWindow* ui;
     EffectHandler* m_effect;
-    QButtonGroup* m_colourSelect;
     Font* m_fontAnchor;
 
     void initComboBox(void);

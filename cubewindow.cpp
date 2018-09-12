@@ -3,19 +3,14 @@
 CubeWindow::CubeWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CubeWindow),
-    m_effect(new EffectHandler(this))
+    m_effect(nullptr)
 {
     ui->setupUi(this);
-    m_colourSelect = new QButtonGroup(this);
-    m_colourSelect->addButton(ui->RadioButton_RGB);
-    m_colourSelect->addButton(ui->RadioButton_singleColour);
+    m_effect = new EffectHandler(ConfigDialog::COLOUR_SINGLE, 9);
 
     initComboBox();
 
-    for(auto& effect : m_effect->getEffects())
-    {
-        ui->List_effects->addItem(effect);
-    }
+    updateAvailableEffects();
 }
 
 CubeWindow::~CubeWindow()
@@ -27,7 +22,8 @@ CubeWindow::~CubeWindow()
 void CubeWindow::initComboBox(void)
 {
     m_fontAnchor = new Font();
-    m_fontAnchor->readFont("D:/Dokumente/GitHub/LED-Cube-Software/ressources/DefaultFont.txt");
+
+    m_fontAnchor->readFont(":/fonts/ressources/defaultFont.txt");
 
     ui->comboBox_font->addItem("default");
 
@@ -40,11 +36,7 @@ void CubeWindow::on_Button_action_toggled(bool checked)
     //start animations and block all cube related settings
     if(checked)
     {
-        ui->SpinBox_size->setEnabled(false);
-        ui->RadioButton_RGB->setEnabled(false);
-        ui->RadioButton_singleColour->setEnabled(false);
-
-        Effect::setCubeSize(ui->SpinBox_size->value());
+        ui->actionConfigure->setEnabled(false);
 
         //try to start animations
         if(!m_effect->start())
@@ -53,9 +45,7 @@ void CubeWindow::on_Button_action_toggled(bool checked)
             ui->Button_action->setChecked(false);
 
             //unblock all cube related settings
-            ui->SpinBox_size->setEnabled(true);
-            ui->RadioButton_RGB->setEnabled(true);
-            ui->RadioButton_singleColour->setEnabled(true);
+            ui->actionConfigure->setEnabled(true);
 
             setStatus(QString("Error opening comPort"), QString("#FF0000"));
         }
@@ -66,15 +56,16 @@ void CubeWindow::on_Button_action_toggled(bool checked)
         }
         return;
     }
-    //unblock all cube related settings
-    ui->SpinBox_size->setEnabled(true);
-    ui->RadioButton_RGB->setEnabled(true);
-    ui->RadioButton_singleColour->setEnabled(true);
+    else
+    {
+        //unblock all cube related settings
+        ui->actionConfigure->setEnabled(true);
 
-    setStatus(QString("Stopped"), QString("#868A08"));
+        setStatus(QString("Stopped"), QString("#868A08"));
 
-    //destroy effect object
-    m_effect->stop();
+        //stop effects
+        m_effect->stop();
+    }
 }
 
 void CubeWindow::on_Button_addAll_clicked()
@@ -116,9 +107,25 @@ vector<QString> CubeWindow::getEffectList(void) const
     return out;
 }
 
+void CubeWindow::updateAvailableEffects(void)
+{
+    ui->List_effects->clear();
+    ui->List_executeEffects->clear();
+
+    for(auto& effect : m_effect->getEffects())
+    {       
+        ui->List_effects->addItem(effect);
+    }
+}
+
 bool CubeWindow::isRandomized(void) const
 {
     return ui->CheckBox_randomize->isChecked();
+}
+
+int CubeWindow::getSelectedColour(void) const
+{
+    return 0;
 }
 
 unsigned int CubeWindow::getEffectSpeed(void) const
@@ -159,7 +166,7 @@ void CubeWindow::on_pushButton_addTextEffect_clicked()
         }
     }
 
-    //make multiple fonts possible
+    //TODO make multiple fonts possible
     TextEffect* newEffect = new TextEffect(ui->lineEdit_effectName->text(),
                                           ui->textEdit_displayText->toPlainText(),
                                           m_fontAnchor,
@@ -170,4 +177,35 @@ void CubeWindow::on_pushButton_addTextEffect_clicked()
     ui->List_effects->addItem(newEffect->getKey());
     ui->lineEdit_effectName->clear();
     ui->textEdit_displayText->clear();
+}
+
+void CubeWindow::on_List_effects_doubleClicked(const QModelIndex &index)
+{
+    ui->List_executeEffects->addItem(ui->List_effects->takeItem(index.row()));
+}
+
+void CubeWindow::on_List_executeEffects_doubleClicked(const QModelIndex &index)
+{
+    ui->List_effects->addItem(ui->List_executeEffects->takeItem(index.row()));
+}
+
+void CubeWindow::on_actionConfigure_triggered()
+{
+    ConfigDialog* diag = new ConfigDialog(this);
+    int res = diag->exec();
+    if(res == QDialog::Accepted)
+    {
+        //if no colour was selected ignore the dialog
+        if(diag->getCubeColour() == ConfigDialog::COLOUR_NONE)
+        {
+            return;
+        }
+        else
+        {
+            delete(m_effect);
+
+            m_effect = new EffectHandler(diag->getCubeColour(), diag->getCubeSize());
+        }
+        updateAvailableEffects();
+    }
 }

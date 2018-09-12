@@ -1,9 +1,9 @@
 #ifndef PLAINSEFFECT_H
 #define PLAINSEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 
-class PlainsEffect : public Effect
+class PlainsEffect : public SingleColourEffect
 {
 public:
     PlainsEffect(QString name);

@@ -2,19 +2,19 @@
 
 Array3d::Array3d(int arraySize)
 {
-    this->cubeSize = arraySize;
-    data = (bool*) malloc(pow(this->cubeSize, 3.0) * sizeof(bool));
+    m_cubeSize = arraySize;
+    m_data = (unsigned char*) malloc(pow(m_cubeSize, 3.0) * sizeof(unsigned char));
 }
 
 Array3d::Array3d(const Array3d& obj)
 {
-    this->cubeSize = obj.cubeSize;
-    data = (bool*) malloc(pow(cubeSize, 3.0) * sizeof(bool));
+    m_cubeSize = obj.m_cubeSize;
+    m_data = (unsigned char*) malloc(pow(m_cubeSize, 3.0) * sizeof(unsigned char));
 
-    bool* pdata = data;
-    bool* pobjData = obj.data;
+    unsigned char* pdata = m_data;
+    unsigned char* pobjData = obj.m_data;
 
-    for(int i = 0; i < pow(cubeSize, 3.0); i++)
+    for(int i = 0; i < pow(m_cubeSize, 3.0); i++)
     {
         *pdata++ = *pobjData++;
     }
@@ -22,15 +22,30 @@ Array3d::Array3d(const Array3d& obj)
 
 Array3d::~Array3d()
 {
-    free(data);
+    free(m_data);
 }
 
-bool& Array3d::operator()(int x, int y, int z)
+unsigned char& Array3d::operator()(int x, int y, int z)
 {
-    if(x >= cubeSize || y >= cubeSize || z >= cubeSize || x < 0 || y < 0 || z < 0)
+    if(x >= m_cubeSize || y >= m_cubeSize || z >= m_cubeSize || x < 0 || y < 0 || z < 0)
     {
         std::cout << "invalid pointer: " << x << ", " << y << ", " << z << std::endl;
-        return data[0];
+        return m_data[0];
     }
-    return data[x * (int)pow(cubeSize, 2.0) + y * cubeSize + z];
+    return m_data[(x * m_cubeSize + y) * m_cubeSize + z];
+}
+
+void Array3d::setAll(unsigned char value)
+{
+    unsigned char* pdata = m_data;
+
+    for(int i = 0; i < pow(m_cubeSize, 3.0); i++)
+    {
+        *pdata++ = value;
+    }
+}
+
+void Array3d::clear(void)
+{
+    setAll(0);
 }

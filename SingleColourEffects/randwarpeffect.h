@@ -1,10 +1,10 @@
 #ifndef RANDWARPEFFECT_H
 #define RANDWARPEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 #include "Array/array2d.h"
 
-class RandWarpEffect : public Effect
+class RandWarpEffect : public SingleColourEffect
 {
 private:
     int m_side;

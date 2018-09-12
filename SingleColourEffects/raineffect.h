@@ -1,9 +1,9 @@
 #ifndef RAINEFFECT_H
 #define RAINEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 
-class RainEffect : public Effect
+class RainEffect : public SingleColourEffect
 {
 public:
     RainEffect(QString name);

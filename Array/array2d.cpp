@@ -57,13 +57,7 @@ void Array2d::operator>>=(int i)
 
 void Array2d::clear(void)
 {
-    for(int x = 0; x < m_x; x++)
-    {
-        for(int y = 0; y < m_y; y++)
-        {
-            operator()(x, y) = 0;
-        }
-    }
+    m_data.clear();
 }
 
 void Array2d::add(Array2d array, int offx, int offy)

@@ -1,9 +1,9 @@
 #ifndef WATERFALLEFFECT_H
 #define WATERFALLEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 
-class WaterfallEffect : public Effect
+class WaterfallEffect : public SingleColourEffect
 {
 private:
     int m_x, m_y;

@@ -1,9 +1,9 @@
 #ifndef GAMEOFLIFEEFFECT_H
 #define GAMEOFLIFEEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 
-class GameOfLifeEffect : public Effect
+class GameOfLifeEffect : public SingleColourEffect
 {
 public:
     GameOfLifeEffect(QString name);

@@ -1,14 +1,14 @@
 #ifndef TEXTEFFECT_H
 #define TEXTEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 #include "Array/array2d.h"
 #include "constants.h"
 #include "font.h"
 #include <iostream>
 #include <QString>
 
-class TextEffect : public Effect
+class TextEffect : public SingleColourEffect
 {
 private:
     bool m_centered;

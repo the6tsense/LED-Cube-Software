@@ -1,10 +1,10 @@
 #ifndef ONEAFTERANOTHEREFFECT_H
 #define ONEAFTERANOTHEREFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 #include <math.h>
 
-class OneAfterAnotherEffect : public Effect
+class OneAfterAnotherEffect : public SingleColourEffect
 {
 private:
     int m_x, m_y, m_z;

@@ -1,60 +1,35 @@
-#include "effect.h"
+#include "SingleColourEffect.h"
 
-Array3d* Effect::s_cubearray = nullptr;
-int Effect::s_cubeSize = 0;
-int Effect::s_effectAmount = 0;
+Array3d* SingleColourEffect::s_cubearray = nullptr;
+int SingleColourEffect::s_cubeSize = 0;
+int SingleColourEffect::s_effectAmount = 0;
 
-Effect::Effect() :
-    m_time(0),
-    m_key("")
+SingleColourEffect::SingleColourEffect()
 {
     s_effectAmount++;
 }
 
-Effect::~Effect()
+SingleColourEffect::~SingleColourEffect()
 {
     s_effectAmount--;
 }
 
-void Effect::end(void)
-{}
-
-void Effect::setTime(int time)
-{
-    m_time = time;
-}
-
-int Effect::getTime(void)
-{
-    return m_time;
-}
-
-void Effect::setKey(QString key)
-{
-    m_key = key;
-}
-
-QString Effect::getKey(void)
-{
-    return m_key;
-}
-
-Array3d& Effect::cube(void)
+Array3d& SingleColourEffect::cube(void)
 {
     return *s_cubearray;
 }
 
-int Effect::getEffectAmount(void)
+int SingleColourEffect::getEffectAmount(void)
 {
     return s_effectAmount;
 }
 
-int Effect::getCubeSize(void)
+int SingleColourEffect::getCubeSize(void)
 {
     return s_cubeSize;
 }
 
-void Effect::setCubeSize(int cubeSize)
+void SingleColourEffect::setCubeSize(int cubeSize)
 {
     s_cubeSize = cubeSize;
     if(s_cubearray != nullptr)
@@ -66,7 +41,7 @@ void Effect::setCubeSize(int cubeSize)
 
 /******************************** effect helper functions *****************************/
 
-bool& Effect::mirror(int x, int y, int z, int side)
+unsigned char& SingleColourEffect::mirror(int x, int y, int z, int side)
 {
     switch(side)
     {
@@ -103,7 +78,7 @@ bool& Effect::mirror(int x, int y, int z, int side)
     }
 }
 
-void Effect::switchLayer(int z, int side, bool isOn)
+void SingleColourEffect::switchLayer(int z, int side, bool isOn)
 {
     for(int x = 0; x < s_cubeSize; x++)
     {
@@ -114,7 +89,7 @@ void Effect::switchLayer(int z, int side, bool isOn)
     }
 }
 
-void Effect::shiftLayer(int z, int side, bool isInvert)
+void SingleColourEffect::shiftLayer(int z, int side, bool isInvert)
 {
     for(int x = 0; x < s_cubeSize; x++)
     {
@@ -132,16 +107,10 @@ void Effect::shiftLayer(int z, int side, bool isInvert)
     }
 }
 
-void Effect::clearCube(void)
+void SingleColourEffect::clearCube(void)
 {
-    for(int x = 0; x < s_cubeSize; x++)
+    if(s_cubearray != nullptr)
     {
-        for(int y = 0; y < s_cubeSize; y++)
-        {
-            for(int z = 0; z < s_cubeSize; z++)
-            {
-                cube()(x, y, z) = false;
-            }
-        }
+        s_cubearray->clear();
     }
 }

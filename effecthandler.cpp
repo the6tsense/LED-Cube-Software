@@ -1,19 +1,35 @@
 #include "effecthandler.h"
 
-EffectHandler::EffectHandler(CubeWindow* const window) :
+EffectHandler::EffectHandler(int cubeColour, int cubeSize) :
     m_status(0),
+    m_cubeColour(cubeColour),
+    m_cubeSize(cubeSize),
     m_usb(new UsbHandler()),
     m_currentEffect(nullptr)
 {
     m_isActive = true;
     m_isUpdateReady = false;
-    m_window = window;
 
     srand(time(nullptr));
 
-    initEffectList();
+    if(m_cubeColour == ConfigDialog::COLOUR_SINGLE)
+    {     
+        singleColourList();
+        SingleColourEffect::setCubeSize(m_cubeSize);
+        m_clearCube = &SingleColourEffect::clearCube;
+    }
+    else if(m_cubeColour == ConfigDialog::COLOUR_GRADIENT)
+    {
 
-    Effect::clearCube();
+    }
+    else if(m_cubeColour == ConfigDialog::COLOUR_RGB)
+    {
+        fullColourList();
+        FullColourEffect::setCubeSize(m_cubeSize);
+        m_clearCube = &FullColourEffect::clearCube;
+    }
+
+    m_clearCube();
 }
 
 EffectHandler::~EffectHandler()
@@ -25,26 +41,7 @@ EffectHandler::~EffectHandler()
     }
 }
 
-void EffectHandler::initEffectList(void)
-{
-    m_effects.push_back(new FireworksEffect("Fireworks"));
-    m_effects.push_back(new OneAfterAnotherEffect("One after another"));
-    m_effects.push_back(new PlainsEffect("Plains"));
-    m_effects.push_back(new RainEffect("Rain"));
-    m_effects.push_back(new RandWarpEffect("Random warp"));
-    m_effects.push_back(new ShrinkBoxEffect("Shrink Box"));
-    m_effects.push_back(new WaterfallEffect("Waterfall"));
-    m_effects.push_back(new GameOfLifeEffect("Game of Life"));
-    m_effects.push_back(new MathFunctionEffect(3.14159 * 100, "Wave", &MathFunctions::linearWave));
-    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
-                                               "Diagonal Wave",
-                                               &MathFunctions::diagonalWave));
-    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
-                                               "Middle Wave",
-                                               &MathFunctions::midWave));
-}
-
-bool EffectHandler::start(void)
+bool EffectHandler::start()
 {
     if(!m_usb->openPort())
     {
@@ -70,6 +67,32 @@ void EffectHandler::stop(void)
     delete(m_usb);
 }
 
+void EffectHandler::singleColourList(void)
+{
+    m_effects.clear();
+    m_effects.push_back(new FireworksEffect("Fireworks"));
+    m_effects.push_back(new OneAfterAnotherEffect("One after another"));
+    m_effects.push_back(new PlainsEffect("Plains"));
+    m_effects.push_back(new RainEffect("Rain"));
+    m_effects.push_back(new RandWarpEffect("Random warp"));
+    m_effects.push_back(new ShrinkBoxEffect("Shrink Box"));
+    m_effects.push_back(new WaterfallEffect("Waterfall"));
+    m_effects.push_back(new GameOfLifeEffect("Game of Life"));
+    m_effects.push_back(new MathFunctionEffect(3.14159 * 100, "Wave", &MathFunctions::linearWave));
+    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
+                                               "Diagonal Wave",
+                                               &MathFunctions::diagonalWave));
+    m_effects.push_back(new MathFunctionEffect(3.14159 * 100,
+                                               "Middle Wave",
+                                               &MathFunctions::midWave));
+}
+
+void EffectHandler::fullColourList(void)
+{
+    m_effects.clear();
+    m_effects.push_back(new HueLampEffect("Hue Lamp"));
+}
+
 void EffectHandler::addEffect(Effect* effect)
 {
     m_effects.push_back(effect);
@@ -88,7 +111,7 @@ vector<QString> EffectHandler::getEffects(void)
 
 void EffectHandler::effectLoop()
 {
-    Effect::clearCube();
+    m_clearCube();
 
     while(m_isActive)
     {
@@ -106,7 +129,7 @@ void EffectHandler::effectLoop()
         chrono::milliseconds duration(m_window->getEffectSpeed());
         this_thread::sleep_for(duration);
 
-        m_usb->sendUpdate();
+       triggerUpdate();
 
         m_status++;
 
@@ -115,6 +138,22 @@ void EffectHandler::effectLoop()
             m_status = 0;
             nextEffect();
         }
+    }
+}
+
+void EffectHandler::triggerUpdate()
+{
+    if(m_cubeColour == ConfigDialog::COLOUR_SINGLE)
+    {
+        m_usb->sendSingleColourUpdate();
+    }
+    else if(m_cubeColour == ConfigDialog::COLOUR_GRADIENT)
+    {
+
+    }
+    else if(m_cubeColour == ConfigDialog::COLOUR_RGB)
+    {
+        m_usb->sendFullColourUpdate();
     }
 }
 
@@ -135,8 +174,8 @@ void EffectHandler::nextEffect()
         }
         m_currentEffect = nullptr;
 
-        Effect::clearCube();
-        m_usb->sendUpdate();
+        m_clearCube();
+        triggerUpdate();
 
         return;
     }
@@ -159,7 +198,7 @@ void EffectHandler::nextEffect()
         {
             m_currentEffect->end();
 
-            Effect::clearCube();
+            m_clearCube();
 
             //select random effect
             if(m_window->isRandomized())

@@ -1,9 +1,9 @@
 #ifndef SHRINKBOXEFFECT_H
 #define SHRINKBOXEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 
-class ShrinkBoxEffect : public Effect
+class ShrinkBoxEffect : public SingleColourEffect
 {
 private:
     int m_side;

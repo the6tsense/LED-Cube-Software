@@ -35,7 +35,6 @@ void OneAfterAnotherEffect::calc(int status)
     }
 }
 
-
 int OneAfterAnotherEffect::getTime(void)
 {
     return 2 * pow(getCubeSize(), 3);

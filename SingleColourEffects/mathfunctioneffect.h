@@ -1,10 +1,10 @@
 #ifndef MATHFUNCTIONEFFECT_H
 #define MATHFUNCTIONEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 #include "mathfunctions.h"
 
-class MathFunctionEffect : public Effect
+class MathFunctionEffect : public SingleColourEffect
 {
 private:
     static MathFunctions* s_mathFunc;

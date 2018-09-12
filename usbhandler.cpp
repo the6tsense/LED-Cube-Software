@@ -97,23 +97,28 @@ void UsbHandler::test(bool xy) {
     free(stream);
 }
 
-void UsbHandler::sendUpdate(void) {
+void UsbHandler::sendSingleColourUpdate(void)
+{
     int count = 0;
-    int bytes = ceil(pow(Effect::getCubeSize(), 3.0) / 7);
+    int bytes = ceil(pow(SingleColourEffect::getCubeSize(), 3.0) / 7);
     unsigned char* const stream = (unsigned char*) malloc(bytes * sizeof(unsigned char));
     unsigned char streamChar = 0x00;
     unsigned char* pstream = stream;
 
-    for(int x = 0; x < Effect::getCubeSize(); x++) {
-        for(int y = 0; y < Effect::getCubeSize(); y++) {
-            for(int z = 0; z < Effect::getCubeSize(); z++) {
-                if(count >= 7) {
+    for(int x = 0; x < SingleColourEffect::getCubeSize(); x++)
+    {
+        for(int y = 0; y < SingleColourEffect::getCubeSize(); y++)
+        {
+            for(int z = 0; z < SingleColourEffect::getCubeSize(); z++)
+            {
+                if(count >= 7)
+                {
                     *pstream++ = streamChar;
                     streamChar = 0x00;
                     count = 0;
                 }
 
-                streamChar |= (Effect::cube()(x, y, z) << count);
+                streamChar |= (SingleColourEffect::cube()(x, y, z) << count);
                 count ++;
             }
         }
@@ -124,15 +129,66 @@ void UsbHandler::sendUpdate(void) {
     stream[0] |= (1 << 7);
 
     #ifdef STREAMDEBUG
-    for(int i = 0; i < bytes; i++) {
+    for(int i = 0; i < bytes; i++)
+    {
         cout << hex << (int) stream[i] << ", ";
     }
     cout << endl;
     #endif
 
-    if(!RS232_SendBuf(m_port, stream, bytes)) {
+    if(!RS232_SendBuf(m_port, stream, bytes))
+    {
         cout << "Error sending bytes." << endl;
-    } else {
+    }
+    else
+    {
+        #ifdef STREAMDEBUG
+        cout << "sending succesfull" << endl;
+        #endif
+    }
+
+    free(stream);
+}
+
+void UsbHandler::fullColourInnerLoop(int z, FullColourEffect::COLOUR c, unsigned char*& pstream)
+{
+    for(int y = 0; y < FullColourEffect::getCubeSize(); y++)
+    {
+        for(int x = 0; x < FullColourEffect::getCubeSize(); x++)
+        {
+            *pstream++ = FullColourEffect::cube(c)(x, y, z);
+        }
+    }
+}
+
+
+void UsbHandler::sendFullColourUpdate(void)
+{
+    int bytes = 3 * ceil(pow(FullColourEffect::getCubeSize(), 3.0));
+    unsigned char* const stream = (unsigned char*) malloc(bytes * sizeof(unsigned char));
+    unsigned char* pstream = stream;
+
+    for(int z = 0; z < SingleColourEffect::getCubeSize(); z++)
+    {
+        fullColourInnerLoop(z, FullColourEffect::RED, pstream);
+        fullColourInnerLoop(z, FullColourEffect::GREEN, pstream);
+        fullColourInnerLoop(z, FullColourEffect::BLUE, pstream);
+    }
+
+    #ifdef STREAMDEBUG
+    for(int i = 0; i < bytes; i++)
+    {
+        cout << hex << (int) stream[i] << ", ";
+    }
+    cout << endl;
+    #endif
+
+    if(!RS232_SendBuf(m_port, stream, bytes))
+    {
+        cout << "Error sending bytes." << endl;
+    }
+    else
+    {
         #ifdef STREAMDEBUG
         cout << "sending succesfull" << endl;
         #endif

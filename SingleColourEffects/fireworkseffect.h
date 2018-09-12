@@ -1,12 +1,12 @@
-#ifndef FOREWORKSEFFECT_H
-#define FOREWORKSEFFECT_H
+#ifndef FIREWORKSEFFECT_H
+#define FIREWORKSEFFECT_H
 
-#include "effect.h"
+#include "SingleColourEffect.h"
 #include "particle.h"
 #include "constants.h"
 #include "cubeTools.h"
 
-class FireworksEffect : public Effect
+class FireworksEffect : public SingleColourEffect
 {
 private:
     int m_zTarget;
@@ -25,4 +25,4 @@ public:
     void end(void);
 };
 
-#endif // FOREWORKSEFFECT_H
+#endif // FIREWORKSEFFECT_H
